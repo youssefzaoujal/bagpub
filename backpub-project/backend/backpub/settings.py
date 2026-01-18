@@ -167,6 +167,12 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_ALL_ORIGINS = DEBUG  # Seulement en mode debug
 CORS_ALLOW_CREDENTIALS = True
 
+# Logging CORS pour débogage (peut être retiré après)
+if not DEBUG:
+    import logging
+    cors_logger = logging.getLogger('cors')
+    cors_logger.info(f"🔧 CORS_ALLOWED_ORIGINS configuré: {CORS_ALLOWED_ORIGINS}")
+
 # CORS headers et méthodes supplémentaires pour les preflight requests
 CORS_ALLOW_HEADERS = [
     'accept',
@@ -196,6 +202,11 @@ if os.environ.get('RAILWAY_PUBLIC_DOMAIN'):
     backend_url = f"https://{os.environ.get('RAILWAY_PUBLIC_DOMAIN')}"
     if backend_url not in CSRF_TRUSTED_ORIGINS:
         CSRF_TRUSTED_ORIGINS.append(backend_url)
+
+# S'assurer que l'URL Vercel est dans CSRF_TRUSTED_ORIGINS
+vercel_url = 'https://bagpub.vercel.app'
+if vercel_url not in CSRF_TRUSTED_ORIGINS:
+    CSRF_TRUSTED_ORIGINS.append(vercel_url)
 
 # REST Framework settings - Optimisé pour performance
 REST_FRAMEWORK = {
