@@ -27,10 +27,19 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    // Ne rediriger que sur les vraies erreurs 401 d'authentification
+    // Exclure les routes publiques ou les erreurs réseau
     if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('refreshToken');
-      window.location.href = '/login';
+      const currentPath = window.location.pathname;
+      // Ne pas rediriger si on est déjà sur la page de login ou si c'est une erreur réseau
+      if (!currentPath.includes('/login') && !currentPath.includes('/register')) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('refreshToken');
+        // Utiliser un petit délai pour éviter les redirections en boucle
+        setTimeout(() => {
+          window.location.href = '/login';
+        }, 100);
+      }
     }
     return Promise.reject(error);
   }
