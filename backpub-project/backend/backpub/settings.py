@@ -159,8 +159,10 @@ AUTH_USER_MODEL = 'api.User'
 
 # CORS settings
 # En production, on doit spécifier les origines autorisées
+# Nettoyer les URLs : retirer les espaces et les '/' à la fin
+cors_origins_raw = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000')
 CORS_ALLOWED_ORIGINS = [
-    origin.strip() for origin in os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',') if origin.strip()
+    origin.strip().rstrip('/') for origin in cors_origins_raw.split(',') if origin.strip()
 ]
 CORS_ALLOW_ALL_ORIGINS = DEBUG  # Seulement en mode debug
 CORS_ALLOW_CREDENTIALS = True

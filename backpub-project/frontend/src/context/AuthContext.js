@@ -49,11 +49,15 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/auth/me/');
+      const response = await axios.get(`${API_URL}/auth/me/`);
       setUser(response.data);
     } catch (error) {
       console.error('Error fetching user:', error);
-      logout();
+      // Ne pas déconnecter immédiatement si c'est juste une erreur réseau temporaire
+      // Vérifier que c'est bien une 401 avant de déconnecter
+      if (error.response?.status === 401) {
+        logout();
+      }
     } finally {
       setLoading(false);
     }
@@ -108,7 +112,7 @@ export const AuthProvider = ({ children }) => {
       // Fallback : récupérer les données utilisateur si le token ne contient pas le rôle
       // Mais seulement si vraiment nécessaire
       try {
-        const userResponse = await axios.get('http://localhost:8000/api/auth/me/');
+        const userResponse = await axios.get(`${API_URL}/auth/me/`);
         setUser(userResponse.data);
         return { success: true, user: userResponse.data };
       } catch (userError) {
