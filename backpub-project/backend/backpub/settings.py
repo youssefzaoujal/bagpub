@@ -84,13 +84,27 @@ WSGI_APPLICATION = 'backpub.wsgi.application'
 
 # Configuration de la base de données pour Railway (PostgreSQL)
 # Utilise DATABASE_URL si disponible (Railway le configure automatiquement)
-DATABASES = {
-    'default': dj_database_url.config(
-        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
+DATABASE_URL = os.environ.get('DATABASE_URL', '')
+if DATABASE_URL:
+    # Utilise PostgreSQL si DATABASE_URL est fourni (Railway)
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+else:
+    # Utilise SQLite en développement local si DATABASE_URL n'est pas défini
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+            'OPTIONS': {
+                'timeout': 20,
+            },
+        }
+    }
 
 # Cache configuration - Améliore grandement les performances
 CACHES = {
