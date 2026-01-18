@@ -1470,7 +1470,7 @@ const AdminDashboard = () => {
                         <TrendingUp className="w-5 h-5 text-[#A67C52]" />
                         Revenus par jour (30 derniers jours)
                       </h3>
-                      <ResponsiveContainer width="100%" height={300}>
+                      <ResponsiveContainer width="100%" height={250} className="sm:h-[300px]">
                         <AreaChart data={analyticsData.revenue_by_day || []}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                           <XAxis dataKey="day" stroke="#64748b" fontSize={12} />
@@ -1497,7 +1497,7 @@ const AdminDashboard = () => {
                         <BarChart3 className="w-5 h-5 text-[#A67C52]" />
                         Revenus par mois (12 derniers mois)
                       </h3>
-                      <ResponsiveContainer width="100%" height={300}>
+                      <ResponsiveContainer width="100%" height={250} className="sm:h-[300px]">
                         <ReBarChart data={analyticsData.revenue_by_month || []}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                           <XAxis dataKey="month" stroke="#64748b" />
@@ -1513,8 +1513,8 @@ const AdminDashboard = () => {
                   </div>
 
                   {/* Revenus par année */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-[#A67C52]/20 shadow-xl">
-                    <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-[#A67C52]/20 shadow-xl">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
                       <TrendingUp className="w-5 h-5 text-[#A67C52]" />
                       Revenus par année
                     </h3>
@@ -1554,7 +1554,7 @@ const AdminDashboard = () => {
                         <PieChart className="w-5 h-5 text-[#A67C52]" />
                         Commandes par statut
                       </h3>
-                      <ResponsiveContainer width="100%" height={300}>
+                      <ResponsiveContainer width="100%" height={250} className="sm:h-[300px]">
                         <RePieChart>
                           <Pie
                             data={analyticsData.campaigns_by_status || []}
@@ -1576,12 +1576,12 @@ const AdminDashboard = () => {
                     </div>
 
                     {/* Top codes postaux */}
-                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-[#A67C52]/20 shadow-xl">
-                      <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-[#A67C52]/20 shadow-xl">
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
                         <MapPin className="w-5 h-5 text-[#A67C52]" />
                         Top 10 codes postaux (commandes)
                       </h3>
-                      <ResponsiveContainer width="100%" height={300}>
+                      <ResponsiveContainer width="100%" height={250} className="sm:h-[300px]">
                         <ReBarChart data={analyticsData.campaigns_by_postal_code || []} layout="vertical">
                           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                           <XAxis type="number" stroke="#64748b" />
@@ -1596,12 +1596,12 @@ const AdminDashboard = () => {
                   </div>
 
                   {/* Distribution par partenaire */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-[#A67C52]/20 shadow-xl">
-                    <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-[#A67C52]/20 shadow-xl">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
                       <Users className="w-5 h-5 text-[#A67C52]" />
                       Distribution par partenaire
                     </h3>
-                    <ResponsiveContainer width="100%" height={400}>
+                      <ResponsiveContainer width="100%" height={300} className="sm:h-[350px] md:h-[400px]">
                       <ReBarChart data={analyticsData.partner_distribution || []}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                         <XAxis dataKey="name" stroke="#64748b" angle={-45} textAnchor="end" height={100} fontSize={12} />
@@ -1628,7 +1628,7 @@ const AdminDashboard = () => {
                         <Crown className="w-5 h-5 text-[#A67C52]" />
                         Top 10 clients (par revenus)
                       </h3>
-                      <ResponsiveContainer width="100%" height={300}>
+                      <ResponsiveContainer width="100%" height={250} className="sm:h-[300px]">
                         <ReBarChart data={analyticsData.top_clients || []} layout="vertical">
                           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                           <XAxis type="number" stroke="#64748b" />
@@ -1643,8 +1643,8 @@ const AdminDashboard = () => {
                     </div>
 
                     {/* Statistiques de commandes */}
-                    <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-[#A67C52]/20 shadow-xl">
-                      <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-[#A67C52]/20 shadow-xl">
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
                         <ShoppingBag className="w-5 h-5 text-[#A67C52]" />
                         Statistiques de commandes
                       </h3>
@@ -1670,18 +1670,18 @@ const AdminDashboard = () => {
                   </div>
 
                   {/* Tableau détaillé des partenaires */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-[#A67C52]/20 shadow-xl">
-                    <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                      <Users className="w-5 h-5 text-[#A67C52]" />
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-[#A67C52]/20 shadow-xl">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+                      <Users className="w-4 h-4 sm:w-5 sm:h-5 text-[#A67C52]" />
                       Détails de distribution par partenaire
                     </h3>
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
+                    <div className="overflow-x-auto -mx-4 sm:mx-0">
+                      <table className="w-full min-w-[400px] sm:min-w-0">
                         <thead>
                           <tr className="border-b-2 border-slate-200">
-                            <th className="text-left py-3 px-4 font-semibold text-slate-700">Partenaire</th>
-                            <th className="text-left py-3 px-4 font-semibold text-slate-700">Commandes</th>
-                            <th className="text-left py-3 px-4 font-semibold text-slate-700">Revenus</th>
+                            <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm">Partenaire</th>
+                            <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm">Commandes</th>
+                            <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm">Revenus</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -1693,16 +1693,16 @@ const AdminDashboard = () => {
                                 animate={{ opacity: 1 }}
                                 className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
                               >
-                                <td className="py-3 px-4 text-slate-900 font-medium">{partner.name}</td>
-                                <td className="py-3 px-4 text-slate-700">{partner.campaigns}</td>
-                                <td className="py-3 px-4 text-slate-700 font-semibold">
+                                <td className="py-2 sm:py-3 px-2 sm:px-4 text-slate-900 font-medium text-xs sm:text-sm">{partner.name}</td>
+                                <td className="py-2 sm:py-3 px-2 sm:px-4 text-slate-700 text-xs sm:text-sm">{partner.campaigns}</td>
+                                <td className="py-2 sm:py-3 px-2 sm:px-4 text-slate-700 font-semibold text-xs sm:text-sm">
                                   {parseFloat(partner.revenue || 0).toFixed(2)} €
                                 </td>
                               </motion.tr>
                             ))
                           ) : (
                             <tr>
-                              <td colSpan={4} className="text-center py-8 text-slate-500">
+                              <td colSpan={3} className="text-center py-6 sm:py-8 text-slate-500 text-sm">
                                 Aucune distribution par partenaire
                               </td>
                             </tr>
@@ -1733,12 +1733,12 @@ const AdminDashboard = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto mx-4"
             >
-              <div className="bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 p-6 text-white">
-                <h2 className="text-2xl font-bold">Créer une commande manuellement</h2>
+              <div className="bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 p-4 sm:p-6 text-white">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Créer une commande manuellement</h2>
               </div>
-              <div className="p-6 space-y-4">
+              <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Nom de la commande</label>
                   <input
@@ -2034,10 +2034,10 @@ const AdminDashboard = () => {
                       return (
                         <>
                           {/* Informations principales */}
-                          <div className="grid md:grid-cols-2 gap-6">
-                            <div className="bg-slate-50 rounded-xl p-5">
-                              <h4 className="font-medium text-slate-700 mb-4 flex items-center gap-2">
-                                <Building2 className="w-5 h-5" /> Informations générales
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                            <div className="bg-slate-50 rounded-xl p-4 sm:p-5">
+                              <h4 className="font-medium text-slate-700 mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
+                                <Building2 className="w-4 h-4 sm:w-5 sm:h-5" /> Informations générales
                               </h4>
                               <div className="space-y-3">
                                 <div className="flex justify-between">
@@ -2071,9 +2071,9 @@ const AdminDashboard = () => {
                               </div>
                             </div>
 
-                            <div className="bg-slate-50 rounded-xl p-5">
-                              <h4 className="font-medium text-slate-700 mb-4 flex items-center gap-2">
-                                <User className="w-5 h-5" /> Informations client
+                            <div className="bg-slate-50 rounded-xl p-4 sm:p-5">
+                              <h4 className="font-medium text-slate-700 mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
+                                <User className="w-4 h-4 sm:w-5 sm:h-5" /> Informations client
                               </h4>
                               <div className="space-y-3">
                                 <div className="flex justify-between">
@@ -2540,12 +2540,12 @@ const AdminDashboard = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full"
+              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4"
             >
-              <div className="bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 p-6 text-white">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h2 className="text-2xl font-bold">Assigner un partenaire</h2>
+              <div className="bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 p-4 sm:p-6 text-white">
+                <div className="flex justify-between items-start sm:items-center gap-3">
+                  <div className="min-w-0 flex-1">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Assigner un partenaire</h2>
                     <p className="text-yellow-50/90 mt-1">
                       {selectedCampaigns.length} commande{selectedCampaigns.length > 1 ? 's' : ''} sélectionnée{selectedCampaigns.length > 1 ? 's' : ''}
                     </p>
@@ -2596,12 +2596,12 @@ const AdminDashboard = () => {
                   </p>
                 </div>
               </div>
-              <div className="p-6 border-t border-slate-200 flex justify-end gap-3">
+              <div className="p-4 sm:p-6 border-t border-slate-200 flex justify-end gap-2 sm:gap-3">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setOpenAssignPartnerModal(false)}
-                  className="px-6 py-3 bg-white border-2 border-slate-200 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all"
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-white border-2 border-slate-200 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-all text-sm sm:text-base"
                 >
                   Annuler
                 </motion.button>
@@ -2618,7 +2618,7 @@ const AdminDashboard = () => {
             initial={{ opacity: 0, y: 50, x: 0 }}
             animate={{ opacity: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, y: 50, x: 0 }}
-            className={`fixed bottom-6 right-6 z-50 px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 ${
+            className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 px-4 sm:px-6 py-3 sm:py-4 rounded-xl shadow-2xl flex items-center gap-2 sm:gap-3 max-w-[calc(100vw-2rem)] sm:max-w-none ${
               notification.type === 'success' 
                 ? 'bg-emerald-500 text-white' 
                 : notification.type === 'error'

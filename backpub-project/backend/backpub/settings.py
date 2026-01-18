@@ -164,14 +164,29 @@ cors_origins_raw = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000
 CORS_ALLOWED_ORIGINS = [
     origin.strip().rstrip('/') for origin in cors_origins_raw.split(',') if origin.strip()
 ]
+
+# FORCER l'ajout de l'URL Vercel si elle n'est pas déjà présente
+vercel_frontend_url = 'https://bagpub.vercel.app'
+if vercel_frontend_url not in CORS_ALLOWED_ORIGINS:
+    CORS_ALLOWED_ORIGINS.append(vercel_frontend_url)
+
+# Ajouter aussi le domaine Railway du frontend si spécifié
+if os.environ.get('FRONTEND_URL'):
+    frontend_url = os.environ.get('FRONTEND_URL').strip().rstrip('/')
+    if frontend_url and frontend_url not in CORS_ALLOWED_ORIGINS:
+        CORS_ALLOWED_ORIGINS.append(frontend_url)
+
 CORS_ALLOW_ALL_ORIGINS = DEBUG  # Seulement en mode debug
 CORS_ALLOW_CREDENTIALS = True
 
-# Logging CORS pour débogage (peut être retiré après)
-if not DEBUG:
-    import logging
-    cors_logger = logging.getLogger('cors')
-    cors_logger.info(f"🔧 CORS_ALLOWED_ORIGINS configuré: {CORS_ALLOWED_ORIGINS}")
+# Logging CORS pour débogage - FORCÉ en production pour voir ce qui se passe
+import logging
+logger = logging.getLogger('django')
+logger.info(f"🔧 CORS_ALLOWED_ORIGINS configuré: {CORS_ALLOWED_ORIGINS}")
+logger.info(f"🔧 CORS_ALLOW_ALL_ORIGINS: {CORS_ALLOW_ALL_ORIGINS}")
+logger.info(f"🔧 DEBUG mode: {DEBUG}")
+if cors_origins_raw:
+    logger.info(f"🔧 Variable CORS_ALLOWED_ORIGINS brute: '{cors_origins_raw}'")
 
 # CORS headers et méthodes supplémentaires pour les preflight requests
 CORS_ALLOW_HEADERS = [

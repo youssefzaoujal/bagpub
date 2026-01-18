@@ -147,7 +147,7 @@ const TemplateMode = ({ formData, setFormData, templates, loading }) => {
           )}
           
           {/* Container des templates */}
-          <div className={`flex justify-center gap-6 ${templates.length > templatesPerView ? 'px-16' : 'px-4'} overflow-hidden`}>
+          <div className={`flex justify-center gap-4 sm:gap-6 ${templates.length > templatesPerView ? 'px-8 sm:px-12 md:px-16' : 'px-4'} overflow-hidden`}>
             {visibleTemplates.map((template) => (
               <div key={template.id} className="flex-shrink-0 w-full max-w-[280px] animate-fade-in">
                 <TemplateCard
@@ -197,9 +197,9 @@ const TemplateMode = ({ formData, setFormData, templates, loading }) => {
       </div>
 
       {/* Section Logo - Simplifiée */}
-      <div className="bg-gray-50 rounded-2xl p-6">
-        <div className="mb-4">
-          <h4 className="text-lg font-semibold text-gray-900 mb-1">Logo (optionnel)</h4>
+      <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+        <div className="mb-3 sm:mb-4">
+          <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">Logo (optionnel)</h4>
           <p className="text-sm text-gray-600">Ajoutez le logo de votre entreprise</p>
         </div>
         
@@ -921,38 +921,38 @@ const CreateCampaign = () => {
       <div className="min-h-screen bg-gradient-to-br from-[#f8f5f2] via-yellow-50/20 to-orange-50/10 relative overflow-hidden">
         <KraftBackground />
         
-        <div className="relative z-10 container mx-auto px-4 py-12 max-w-5xl">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-12 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-2 border-[#A67C52]/20"
+            className="bg-white/90 backdrop-blur-sm rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border-2 border-[#A67C52]/20"
           >
             {/* Header animé avec dégradé kraft */}
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: "spring" }}
-              className="bg-gradient-to-r from-[#A67C52] via-[#F59E0B] to-[#EAB308] p-8 md:p-12 text-white relative overflow-hidden"
+              className="bg-gradient-to-r from-[#A67C52] via-[#F59E0B] to-[#EAB308] p-4 sm:p-6 md:p-8 lg:p-12 text-white relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-[shimmer_3s_infinite]" />
               <div className="relative z-10">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                  <div className="flex items-center gap-4">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
+                  <div className="flex items-center gap-3 sm:gap-4">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: 0.3, type: "spring" }}
-                      className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-4 border-white/30 shadow-xl"
+                      className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-4 border-white/30 shadow-xl shrink-0"
                     >
-                      <CheckCircle2 className="w-10 h-10 text-white" />
+                      <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                     </motion.div>
-                    <div>
+                    <div className="min-w-0">
                       <motion.h1
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="text-3xl md:text-4xl font-extrabold mb-2 drop-shadow-lg"
+                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mb-1 sm:mb-2 drop-shadow-lg"
                       >
                         🎉 Campagne créée avec succès !
                       </motion.h1>
@@ -960,7 +960,7 @@ const CreateCampaign = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 }}
-                        className="text-white/90 text-lg font-medium"
+                        className="text-sm sm:text-base md:text-lg text-white/90 font-medium"
                       >
                         Votre commande est maintenant enregistrée
                       </motion.p>
@@ -970,17 +970,17 @@ const CreateCampaign = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.6, type: "spring" }}
-                    className="bg-white/20 backdrop-blur-md px-6 py-4 rounded-2xl border-2 border-white/30"
+                    className="bg-white/20 backdrop-blur-md px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl border-2 border-white/30 shrink-0"
                   >
-                    <div className="text-sm font-medium text-white/80 mb-1">N° Commande</div>
-                    <div className="text-2xl font-bold text-white">{campaignData.order_number}</div>
+                    <div className="text-xs sm:text-sm font-medium text-white/80 mb-1">N° Commande</div>
+                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">{campaignData.order_number}</div>
                   </motion.div>
                 </div>
               </div>
             </motion.div>
 
             {/* Récapitulatif détaillé */}
-            <div className="p-8 md:p-12">
+            <div className="p-4 sm:p-6 md:p-8 lg:p-12">
               {/* Message de succès */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -997,30 +997,30 @@ const CreateCampaign = () => {
               </motion.div>
 
               {/* Grille de récapitulatif */}
-              <div className="grid md:grid-cols-2 gap-6 mb-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-10">
                 {/* Informations principales */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 }}
-                  className="bg-gradient-to-br from-[#f8f5f2] to-white p-6 rounded-2xl border-2 border-[#A67C52]/20 shadow-lg"
+                  className="bg-gradient-to-br from-[#f8f5f2] to-white p-4 sm:p-6 rounded-xl sm:rounded-2xl border-2 border-[#A67C52]/20 shadow-lg"
                 >
-                  <h3 className="text-xl font-bold text-[#A67C52] mb-4 flex items-center gap-2">
-                    <Package2 className="w-6 h-6" />
+                  <h3 className="text-lg sm:text-xl font-bold text-[#A67C52] mb-3 sm:mb-4 flex items-center gap-2">
+                    <Package2 className="w-5 h-5 sm:w-6 sm:h-6" />
                     Détails de la commande
                   </h3>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center py-2 border-b border-[#A67C52]/10">
-                      <span className="text-slate-600 font-medium">Nom de la campagne</span>
-                      <span className="text-slate-900 font-bold">{campaignData.name || formData.company_name}</span>
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0 py-2 border-b border-[#A67C52]/10">
+                      <span className="text-xs sm:text-sm text-slate-600 font-medium">Nom de la campagne</span>
+                      <span className="text-sm sm:text-base text-slate-900 font-bold truncate">{campaignData.name || formData.company_name}</span>
                     </div>
-                    <div className="flex justify-between items-center py-2 border-b border-[#A67C52]/10">
-                      <span className="text-slate-600 font-medium">Quantité</span>
-                      <span className="text-slate-900 font-bold">{campaignData.quantity || 1000} sacs</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0 py-2 border-b border-[#A67C52]/10">
+                      <span className="text-xs sm:text-sm text-slate-600 font-medium">Quantité</span>
+                      <span className="text-sm sm:text-base text-slate-900 font-bold">{campaignData.quantity || 1000} sacs</span>
                     </div>
-                    <div className="flex justify-between items-center py-2 border-b border-[#A67C52]/10">
-                      <span className="text-slate-600 font-medium">Prix fixe</span>
-                      <span className="text-[#A67C52] font-bold text-xl">129€</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0 py-2 border-b border-[#A67C52]/10">
+                      <span className="text-xs sm:text-sm text-slate-600 font-medium">Prix fixe</span>
+                      <span className="text-[#A67C52] font-bold text-lg sm:text-xl">129€</span>
                     </div>
                     {campaignData.estimated_price && (
                       <div className="flex justify-between items-center py-2">
@@ -1036,10 +1036,10 @@ const CreateCampaign = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.9 }}
-                  className="bg-gradient-to-br from-yellow-50/50 to-orange-50/30 p-6 rounded-2xl border-2 border-yellow-200/50 shadow-lg"
+                  className="bg-gradient-to-br from-yellow-50/50 to-orange-50/30 p-4 sm:p-6 rounded-xl sm:rounded-2xl border-2 border-yellow-200/50 shadow-lg"
                 >
-                  <h3 className="text-xl font-bold text-[#A67C52] mb-4 flex items-center gap-2">
-                    <MapPin className="w-6 h-6" />
+                  <h3 className="text-lg sm:text-xl font-bold text-[#A67C52] mb-3 sm:mb-4 flex items-center gap-2">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
                     Zones de distribution
                   </h3>
                   {(campaignData.postal_codes || formData.postalCodes.length > 0) ? (
@@ -1117,9 +1117,9 @@ const CreateCampaign = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => navigate('/client/dashboard')}
-                  className="flex-1 px-8 py-4 bg-gradient-to-r from-[#A67C52] to-[#F59E0B] hover:from-[#F59E0B] hover:to-[#EAB308] text-white font-bold rounded-xl transition-all shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 text-lg"
+                  className="flex-1 px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#A67C52] to-[#F59E0B] hover:from-[#F59E0B] hover:to-[#EAB308] text-white font-bold rounded-xl transition-all shadow-xl hover:shadow-2xl flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg"
                 >
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   Retour au tableau de bord
                 </motion.button>
                 <motion.button
@@ -1152,9 +1152,9 @@ const CreateCampaign = () => {
                       use_custom_card: false,
                     });
                   }}
-                  className="flex-1 px-8 py-4 bg-white border-2 border-[#A67C52]/30 hover:border-[#A67C52] hover:bg-[#A67C52]/5 text-[#A67C52] font-bold rounded-xl transition-all flex items-center justify-center gap-3 text-lg shadow-md"
+                  className="flex-1 px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-white border-2 border-[#A67C52]/30 hover:border-[#A67C52] hover:bg-[#A67C52]/5 text-[#A67C52] font-bold rounded-xl transition-all flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg shadow-md"
                 >
-                  <FileImage className="w-5 h-5" />
+                  <FileImage className="w-4 h-4 sm:w-5 sm:h-5" />
                   Créer une nouvelle campagne
                 </motion.button>
               </motion.div>
@@ -1182,12 +1182,12 @@ const CreateCampaign = () => {
         animate={{ y: 0 }}
         className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b-2 border-[#A67C52]/20 shadow-lg"
       >
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
-            <div className="flex items-center gap-4">
-              <img src={logo} alt="BagPub Logo" className="w-16 h-16 object-contain" />
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent">Créer une campagne</h1>
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4 lg:gap-5">
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-4 min-w-0">
+              <img src={logo} alt="BagPub Logo" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain shrink-0" />
+              <div className="min-w-0">
+                <h1 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent truncate">Créer une campagne</h1>
                 <p className="text-slate-600 text-sm mt-0.5">
                   Bonjour, <span className="font-semibold text-[#A67C52]">{user?.company_name || user?.username}</span>
                 </p>
@@ -1218,12 +1218,12 @@ const CreateCampaign = () => {
             className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-2 border-[#A67C52]/20"
           >
             {/* Header du formulaire */}
-            <div className="bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 p-8 text-white relative overflow-hidden">
+            <div className="bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 p-4 sm:p-6 md:p-8 text-white relative overflow-hidden">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cardboard.png')] opacity-10"></div>
-              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
                 <div>
-                  <h2 className="text-3xl font-bold mb-2 drop-shadow-lg">Nouvelle Campagne</h2>
-                  <p className="text-yellow-50">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 drop-shadow-lg">Nouvelle Campagne</h2>
+                  <p className="text-sm sm:text-base text-yellow-50">
                     {step === 1 && 'Informations de votre entreprise'}
                     {step === 2 && 'Quantité et zones de distribution'}
                     {step === 3 && !mode && 'Choisissez votre mode de design'}
@@ -1235,7 +1235,7 @@ const CreateCampaign = () => {
             </div>
             
             {/* Progress Steps */}
-            <div className="px-8 pt-8 pb-4 bg-gradient-to-r from-[#A67C52]/5 to-yellow-50/50">
+            <div className="px-4 sm:px-6 md:px-8 pt-6 sm:pt-8 pb-3 sm:pb-4 bg-gradient-to-r from-[#A67C52]/5 to-yellow-50/50">
               <div className="flex justify-between relative">
                 <div className="absolute top-5 left-0 right-0 h-1 bg-gradient-to-r from-[#A67C52]/20 via-yellow-200/50 to-[#A67C52]/20 -z-10"></div>
                 
@@ -1256,9 +1256,9 @@ const CreateCampaign = () => {
                       }`}
                       whileHover={{ scale: 1.1 }}
                     >
-                      {stepNumber < step ? <CheckCircle className="w-6 h-6" /> : stepNumber}
+                      {stepNumber < step ? <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" /> : stepNumber}
                     </motion.div>
-                    <span className={`text-sm font-semibold ${
+                    <span className={`text-xs sm:text-sm font-semibold ${
                       stepNumber === step ? 'text-[#A67C52]' : 'text-slate-600'
                     }`}>
                       {stepNumber === 1 && 'Informations'}
@@ -1271,25 +1271,25 @@ const CreateCampaign = () => {
             </div>
             
             {/* Form Content */}
-            <div className="p-8" key="form-content">
+            <div className="p-4 sm:p-6 md:p-8" key="form-content">
               {/* Step 1: Informations */}
               {step === 1 && (
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="space-y-8"
+                  className="space-y-6 sm:space-y-8"
                 >
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#A67C52] to-yellow-600 rounded-xl flex items-center justify-center shadow-lg">
-                      <Building2 className="w-8 h-8 text-white" />
+                  <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-[#A67C52] to-yellow-600 rounded-xl flex items-center justify-center shadow-lg shrink-0">
+                      <Building2 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                     </div>
-                    <div>
-                      <h2 className="text-3xl font-bold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent">Informations de votre entreprise</h2>
-                      <p className="text-slate-600 mt-1">Remplissez vos coordonnées pour vos cartes de visite</p>
+                    <div className="min-w-0">
+                      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent">Informations de votre entreprise</h2>
+                      <p className="text-sm sm:text-base text-slate-600 mt-1">Remplissez vos coordonnées pour vos cartes de visite</p>
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label className="block text-sm font-semibold text-slate-700 mb-2">
                         Nom de l'entreprise <span className="text-red-500">*</span>
@@ -1299,7 +1299,7 @@ const CreateCampaign = () => {
                         name="company_name"
                         value={formData.company_name}
                         onChange={(e) => setFormData(prev => ({ ...prev, company_name: e.target.value }))}
-                        className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm text-sm sm:text-base"
                         required
                       />
                     </div>
@@ -1313,7 +1313,7 @@ const CreateCampaign = () => {
                         name="slogan"
                         value={formData.slogan}
                         onChange={(e) => setFormData(prev => ({ ...prev, slogan: e.target.value }))}
-                        className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm text-sm sm:text-base"
                         placeholder="Votre slogan professionnel"
                       />
                     </div>
@@ -1327,7 +1327,7 @@ const CreateCampaign = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                        className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm text-sm sm:text-base"
                         required
                         placeholder="01 23 45 67 89"
                       />
@@ -1342,7 +1342,7 @@ const CreateCampaign = () => {
                         name="email"
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                        className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm text-sm sm:text-base"
                         required
                       />
                     </div>
@@ -1356,7 +1356,7 @@ const CreateCampaign = () => {
                         name="address"
                         value={formData.address}
                         onChange={(e) => setFormData(prev => ({ ...prev, address: e.target.value }))}
-                        className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm text-sm sm:text-base"
                         placeholder="123 Avenue des Champs-Élysées"
                       />
                     </div>
@@ -1371,7 +1371,7 @@ const CreateCampaign = () => {
                         value={formData.postal_code}
                         onChange={(e) => setFormData(prev => ({ ...prev, postal_code: e.target.value }))}
                         maxLength="5"
-                        className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3.5 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-[#A67C52]/20 focus:border-[#A67C52] transition-all bg-white shadow-sm text-sm sm:text-base"
                         required
                         placeholder="75001"
                       />
@@ -1596,14 +1596,14 @@ const CreateCampaign = () => {
                           animate={{ opacity: 1, x: 0 }}
                           whileHover={{ scale: 1.02, y: -4 }}
                           onClick={() => setMode('template')}
-                          className="bg-white rounded-2xl p-8 border-2 border-slate-200 hover:border-[#A67C52] cursor-pointer transition-all shadow-lg hover:shadow-xl relative overflow-hidden group"
+                          className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border-2 border-slate-200 hover:border-[#A67C52] cursor-pointer transition-all shadow-lg hover:shadow-xl relative overflow-hidden group"
                         >
                           <div className="absolute inset-0 bg-gradient-to-br from-[#A67C52]/5 to-yellow-50/30 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                           <div className="relative z-10">
-                            <div className="w-16 h-16 bg-gradient-to-br from-[#A67C52] to-yellow-600 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                              <Palette className="w-8 h-8 text-white" />
+                            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-[#A67C52] to-yellow-600 rounded-xl flex items-center justify-center mb-3 sm:mb-4 shadow-lg shrink-0">
+                              <Palette className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-2">Utiliser nos templates</h3>
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-2">Utiliser nos templates</h3>
                             <p className="text-slate-600 mb-4">Choisissez parmi nos designs professionnels prêts à l'emploi</p>
                             <ul className="space-y-2 text-sm text-slate-600">
                               <li className="flex items-center gap-2">
@@ -1628,14 +1628,14 @@ const CreateCampaign = () => {
                           animate={{ opacity: 1, x: 0 }}
                           whileHover={{ scale: 1.02, y: -4 }}
                           onClick={() => setMode('custom')}
-                          className="bg-white rounded-2xl p-8 border-2 border-slate-200 hover:border-[#A67C52] cursor-pointer transition-all shadow-lg hover:shadow-xl relative overflow-hidden group"
+                          className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border-2 border-slate-200 hover:border-[#A67C52] cursor-pointer transition-all shadow-lg hover:shadow-xl relative overflow-hidden group"
                         >
                           <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/30 to-orange-50/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                           <div className="relative z-10">
-                            <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mb-4 shadow-lg">
-                              <UploadCloud className="w-8 h-8 text-white" />
+                            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mb-3 sm:mb-4 shadow-lg shrink-0">
+                              <UploadCloud className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-2">Uploader ma carte</h3>
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-2">Uploader ma carte</h3>
                             <p className="text-slate-600 mb-4">Téléchargez votre propre design de carte de visite</p>
                             <ul className="space-y-2 text-sm text-slate-600">
                               <li className="flex items-center gap-2">

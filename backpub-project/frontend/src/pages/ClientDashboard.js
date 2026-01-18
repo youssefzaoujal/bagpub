@@ -309,11 +309,11 @@ const CampaignDetailsModal = ({ isOpen, onClose, campaign, details, loading }) =
         className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
       >
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-slate-200 p-6 rounded-t-2xl">
-          <div className="flex justify-between items-center">
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900">{campaign?.name}</h2>
-              <p className="text-slate-600">Commande #{campaign?.order_number}</p>
+        <div className="sticky top-0 bg-white border-b border-slate-200 p-4 sm:p-6 rounded-t-2xl z-10">
+          <div className="flex justify-between items-start sm:items-center gap-3 sm:gap-0">
+            <div className="min-w-0 flex-1">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 truncate">{campaign?.name}</h2>
+              <p className="text-sm sm:text-base text-slate-600">Commande #{campaign?.order_number}</p>
             </div>
             <button
               onClick={onClose}
@@ -360,9 +360,9 @@ const CampaignDetailsModal = ({ isOpen, onClose, campaign, details, loading }) =
                   </div>
                 </div>
 
-                <div className="bg-slate-50 rounded-xl p-5">
-                  <h4 className="font-medium text-slate-700 mb-4 flex items-center gap-2">
-                    <User className="w-5 h-5" /> Informations client
+                <div className="bg-slate-50 rounded-xl p-4 sm:p-5">
+                  <h4 className="font-medium text-slate-700 mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
+                    <User className="w-4 h-4 sm:w-5 sm:h-5" /> Informations client
                   </h4>
                   <div className="space-y-3">
                     <div className="flex justify-between">
@@ -431,9 +431,9 @@ const CampaignDetailsModal = ({ isOpen, onClose, campaign, details, loading }) =
               </div>
 
               {/* Codes postaux */}
-              <div className="bg-slate-50 rounded-xl p-5">
-                <h4 className="font-medium text-slate-700 mb-4 flex items-center gap-2">
-                  <MapPin className="w-5 h-5" /> Zones de distribution
+              <div className="bg-slate-50 rounded-xl p-4 sm:p-5">
+                <h4 className="font-medium text-slate-700 mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5" /> Zones de distribution
                 </h4>
                 {details.postal_codes && details.postal_codes.trim() ? (
                   <div>
@@ -717,10 +717,10 @@ const AssignPartnerModal = ({ isOpen, onClose, campaign, partners, onAssign }) =
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white rounded-2xl p-6 max-w-md w-full"
+        className="bg-white rounded-2xl p-4 sm:p-6 max-w-md w-full mx-4"
       >
-        <div className="flex justify-between items-center mb-6">
-          <h3 className="text-xl font-bold text-slate-900">Attribuer un partenaire</h3>
+        <div className="flex justify-between items-center mb-4 sm:mb-6">
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900">Attribuer un partenaire</h3>
           <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-lg">
             <X className="w-5 h-5" />
           </button>
@@ -777,17 +777,17 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, title, message }) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl"
+        className="bg-white rounded-2xl p-4 sm:p-6 max-w-md w-full shadow-2xl mx-4"
       >
-        <div className="text-center mb-6">
-          <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <AlertCircle className="w-6 h-6 text-red-600" />
+        <div className="text-center mb-4 sm:mb-6">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+            <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />
           </div>
-          <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
-          <p className="text-slate-600">{message}</p>
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">{title}</h3>
+          <p className="text-sm sm:text-base text-slate-600">{message}</p>
         </div>
         
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
           <button
             onClick={onClose}
             className="flex-1 px-4 py-3 text-slate-700 hover:bg-slate-100 rounded-xl font-medium transition-colors"
@@ -1699,18 +1699,18 @@ const ClientDashboard = () => {
             </div>
           ) : activeTab === 'profile' ? (
             // PROFIL
-            <div className="max-w-4xl mx-auto pt-8">
+            <div className="max-w-4xl mx-auto pt-4 sm:pt-6 md:pt-8">
               <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
                 {/* Header profil */}
-                <div className="bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 p-8 text-white relative overflow-hidden">
+                <div className="bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 p-4 sm:p-6 md:p-8 text-white relative overflow-hidden">
                   {/* Effet de texture */}
                   <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cardboard.png')]"></div>
-                  <div className="relative z-10 flex items-center gap-6">
-                    <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm border-4 border-white/40 flex items-center justify-center text-3xl font-bold shadow-xl">
+                  <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-white/20 backdrop-blur-sm border-4 border-white/40 flex items-center justify-center text-xl sm:text-2xl md:text-3xl font-bold shadow-xl shrink-0">
                       {(user?.company_name?.[0] || user?.username?.[0] || 'U').toUpperCase()}
                     </div>
-                    <div>
-                      <h1 className="text-3xl font-bold mb-2 drop-shadow-lg">
+                    <div className="text-center sm:text-left">
+                      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 drop-shadow-lg">
                         {user?.company_name || user?.username || 'Utilisateur'}
                       </h1>
                       <div className="flex items-center gap-2 mb-1">
@@ -1728,8 +1728,8 @@ const ClientDashboard = () => {
                 </div>
 
                 {/* Contenu profil */}
-                <div className="p-8 bg-gradient-to-br from-[#f8f5f2] to-white">
-                  <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-4 sm:p-6 md:p-8 bg-gradient-to-br from-[#f8f5f2] to-white">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                     <div>
                       <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                         <User className="w-6 h-6 text-[#A67C52]" />
@@ -1824,7 +1824,7 @@ const ClientDashboard = () => {
       {/* FOOTER */}
       <footer className="mt-16 pt-12 pb-8 bg-gradient-to-b from-slate-50 to-white border-t-2 border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
             {/* Logo et description */}
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">

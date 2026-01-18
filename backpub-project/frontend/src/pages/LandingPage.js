@@ -1093,20 +1093,20 @@ const AdvancedROISimulator = memo(() => {
     <div className="relative">
       <div className="absolute inset-0 bg-gradient-to-br from-[#A67C52]/5 to-yellow-500/5 rounded-3xl" />
       
-      <div className="relative bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
-        <div className="grid lg:grid-cols-2 gap-8 p-8">
+      <div className="relative bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 p-4 sm:p-6 md:p-8">
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-yellow-100 rounded-lg">
-                <Calculator className="w-6 h-6 text-[#A67C52]" />
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <div className="p-1.5 sm:p-2 bg-yellow-100 rounded-lg shrink-0">
+                <Calculator className="w-5 h-5 sm:w-6 sm:h-6 text-[#A67C52]" />
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">Simulateur ROI Intelligent</h3>
-                <p className="text-slate-600 text-sm">Calculez votre retour sur investissement en temps réel</p>
+              <div className="min-w-0">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900">Simulateur ROI Intelligent</h3>
+                <p className="text-xs sm:text-sm text-slate-600">Calculez votre retour sur investissement en temps réel</p>
               </div>
             </div>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div>
                 <div className="flex justify-between mb-4">
                   <div>
@@ -1263,7 +1263,7 @@ const FeaturesShowcase = () => {
   ], []);
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
       {features.map((feature, idx) => (
         <motion.div
           key={idx}
@@ -1272,13 +1272,13 @@ const FeaturesShowcase = () => {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.4, delay: idx * 0.1 }}
         >
-          <ElegantCard className="p-6 h-full" hover={true} glow={true}>
-            <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${feature.color} flex items-center justify-center text-white mb-4 shadow-md`}>
-              {React.cloneElement(feature.icon, { size: 24 })}
+          <ElegantCard className="p-4 sm:p-6 h-full" hover={true} glow={true}>
+            <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-r ${feature.color} flex items-center justify-center text-white mb-3 sm:mb-4 shadow-md shrink-0`}>
+              {React.cloneElement(feature.icon, { size: 20, className: "sm:w-6 sm:h-6" })}
             </div>
             
-            <h4 className="text-lg font-bold text-slate-900 mb-3">{feature.title}</h4>
-            <p className="text-slate-600 text-sm mb-4 leading-relaxed">{feature.description}</p>
+            <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-2 sm:mb-3">{feature.title}</h4>
+            <p className="text-sm sm:text-base text-slate-600 mb-3 sm:mb-4 leading-relaxed">{feature.description}</p>
             
             <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
               <span className="text-sm font-semibold text-slate-700">{feature.stats}</span>
@@ -1713,8 +1713,8 @@ function LandingPage() {
           }
         `}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+          <div className="flex justify-between items-center gap-2 sm:gap-4">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -1724,7 +1724,7 @@ function LandingPage() {
               <motion.img
                 src={logo}
                 alt="BagPub Logo"
-                className="w-32 h-32 object-contain"
+                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 object-contain"
                 whileHover={{ rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               />
@@ -1880,7 +1880,7 @@ function LandingPage() {
             </motion.div>
 
             {/* Titre principal */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6">
               <TextReveal delay={0.3} as="div">
                 Boostez votre visibilité
               </TextReveal>
@@ -1907,7 +1907,7 @@ function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 md:mb-16 px-2 sm:px-0"
             >
               <WowButton
                 onClick={() => navigate('/register/client')}
@@ -1933,7 +1933,7 @@ function LandingPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.3 }}
-              className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto"
+              className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto"
             >
               {[
                 { value: 9, label: "Cartes par sac", icon: <QrCode size={20} />, color: "text-[#A67C52]" },
@@ -1953,7 +1953,7 @@ function LandingPage() {
                           duration={1.5}
                         />
                       </div>
-                      <div className="text-sm text-slate-600">{stat.label}</div>
+                      <div className="text-xs sm:text-sm text-slate-600 truncate">{stat.label}</div>
                     </div>
                   </div>
                 </ElegantCard>
@@ -1999,10 +1999,10 @@ function LandingPage() {
             <Badge variant="blue" icon={<Zap size={12} />} className="mb-4">
               Fonctionnement
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
               Comment ça <GradientText gradient="from-[#A67C52] to-yellow-600">marche</GradientText> ?
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto px-2 sm:px-0">
               Une solution simple en 4 étapes pour maximiser votre visibilité locale
             </p>
           </motion.div>
@@ -2012,18 +2012,18 @@ function LandingPage() {
       </section>
       <CardsShowcase />
       {/* Section Fonctionnalités */}
-      <section className="py-20 bg-transparent">
+      <section className="py-12 sm:py-16 md:py-20 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <Badge variant="purple" icon={<Sparkles size={12} />} className="mb-4">
+            <Badge variant="purple" icon={<Sparkles size={12} />} className="mb-3 sm:mb-4">
               Avantages
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
               Pourquoi choisir <GradientText gradient="from-purple-600 to-pink-600">BagPub</GradientText> ?
             </h2>
           </motion.div>
@@ -2054,7 +2054,7 @@ function LandingPage() {
       </section>
 
       {/* Section Tarifs/Pricing - Améliorée */}
-      <section id="pricing" className="py-20 md:py-32 relative overflow-hidden">
+      <section id="pricing" className="py-12 sm:py-16 md:py-20 lg:py-32 relative overflow-hidden">
         {/* Background décoratif */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#A67C52]/5 via-yellow-50/30 to-orange-50/20"></div>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-yellow-400/10 to-orange-400/10 rounded-full blur-3xl"></div>
@@ -2087,7 +2087,7 @@ function LandingPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto mb-8 sm:mb-12">
             {/* Colonne 1: Prix */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -2113,9 +2113,9 @@ function LandingPage() {
               transition={{ delay: 0.4 }}
               className="text-center"
             >
-              <ElegantCard className="p-6 h-full bg-gradient-to-br from-white to-yellow-50/30 border-2 border-yellow-200">
-                <Package className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
-                <div className="text-xl font-bold text-slate-900 mb-3">Tout inclus</div>
+              <ElegantCard className="p-4 sm:p-6 h-full bg-gradient-to-br from-white to-yellow-50/30 border-2 border-yellow-200">
+                <Package className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-yellow-600 mx-auto mb-3 sm:mb-4" />
+                <div className="text-lg sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3">Tout inclus</div>
                 <div className="space-y-2 text-sm text-slate-600 text-left">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
@@ -2170,7 +2170,7 @@ function LandingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-2xl mx-auto"
           >
-            <ElegantCard className="p-8 md:p-12 border-3 border-[#A67C52]/30 relative overflow-hidden bg-gradient-to-br from-white via-yellow-50/20 to-orange-50/10" glow={true}>
+            <ElegantCard className="p-6 sm:p-8 md:p-12 border-3 border-[#A67C52]/30 relative overflow-hidden bg-gradient-to-br from-white via-yellow-50/20 to-orange-50/10" glow={true}>
               {/* Éléments décoratifs */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#A67C52]/10 to-yellow-400/10 rounded-full blur-2xl"></div>
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-orange-300/10 to-yellow-300/10 rounded-full blur-2xl"></div>
