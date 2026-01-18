@@ -53,11 +53,14 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data);
     } catch (error) {
       console.error('Error fetching user:', error);
-      // Ne pas déconnecter immédiatement si c'est juste une erreur réseau temporaire
-      // Vérifier que c'est bien une 401 avant de déconnecter
-      if (error.response?.status === 401) {
+      // Ne pas déconnecter si l'utilisateur est déjà défini (par exemple depuis le token JWT)
+      // Ne déconnecter que si on est vraiment sûr que le token est invalide (401) et qu'on n'a pas de user
+      if (error.response?.status === 401 && !user) {
+        // Seulement déconnecter si on n'a pas d'utilisateur défini
         logout();
       }
+      // Si on a déjà un user (par exemple depuis le token), on ne fait rien
+      // On garde l'utilisateur tel quel
     } finally {
       setLoading(false);
     }

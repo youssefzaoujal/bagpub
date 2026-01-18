@@ -189,6 +189,14 @@ CORS_ALLOW_METHODS = [
     'PUT',
 ]
 
+# CSRF settings - Nécessaire pour les requêtes POST/PUT/DELETE
+CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS.copy()
+# Ajouter aussi l'URL Railway du backend si nécessaire
+if os.environ.get('RAILWAY_PUBLIC_DOMAIN'):
+    backend_url = f"https://{os.environ.get('RAILWAY_PUBLIC_DOMAIN')}"
+    if backend_url not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append(backend_url)
+
 # REST Framework settings - Optimisé pour performance
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
