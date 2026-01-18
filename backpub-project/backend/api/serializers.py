@@ -62,21 +62,26 @@ class RegisterClientSerializer(serializers.ModelSerializer):
         return user
     
     def send_welcome_email(self, user):
-        """Envoyer un email de bienvenue au client (asynchrone)"""
-        import threading
-        from .utils.email_service import EmailService
-        
-        def send_email_async():
-            try:
-                EmailService.send_welcome_email_client(user)
-                print(f"✅ Email de bienvenue envoyé à {user.email}")
-            except Exception as e:
-                print(f"⚠️ Erreur envoi email de bienvenue: {e}")
-        
-        # Lancer l'envoi d'email dans un thread séparé (non bloquant)
-        thread = threading.Thread(target=send_email_async)
-        thread.daemon = True
-        thread.start()
+        """Envoyer un email de bienvenue au client (asynchrone) - Optionnel"""
+        try:
+            import threading
+            from .utils.email_service import EmailService
+            
+            def send_email_async():
+                try:
+                    EmailService.send_welcome_email_client(user)
+                    print(f"✅ Email de bienvenue envoyé à {user.email}")
+                except Exception as e:
+                    # L'erreur d'email ne doit pas bloquer l'inscription
+                    print(f"⚠️ Erreur envoi email de bienvenue: {e}")
+            
+            # Lancer l'envoi d'email dans un thread séparé (non bloquant)
+            thread = threading.Thread(target=send_email_async)
+            thread.daemon = True
+            thread.start()
+        except Exception as e:
+            # Si même l'import échoue, on continue quand même l'inscription
+            print(f"⚠️ Impossible d'envoyer l'email de bienvenue: {e}")
 
 class RegisterPartnerSerializer(serializers.ModelSerializer):
     """Serializer pour l'inscription des partenaires"""
