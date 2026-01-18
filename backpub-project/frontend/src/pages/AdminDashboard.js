@@ -692,15 +692,15 @@ const AdminDashboard = () => {
         animate={{ y: 0 }}
         className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 shadow-sm"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <img src={logo} alt="BagPub Logo" className="w-16 h-16 object-contain" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+            <div className="flex items-center gap-3 sm:gap-6">
+              <img src={logo} alt="BagPub Logo" className="w-12 h-12 sm:w-16 sm:h-16 object-contain" />
               <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent">
+                <h1 className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent">
                   Dashboard Administrateur
                 </h1>
-                <p className="text-sm text-slate-600">Gestion complète de la plateforme</p>
+                <p className="text-xs sm:text-sm text-slate-600">Gestion complète de la plateforme</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -725,14 +725,14 @@ const AdminDashboard = () => {
         </div>
       </motion.nav>
 
-      <div className="pt-36 pb-12 px-6 max-w-7xl mx-auto">
+      <div className="pt-24 sm:pt-28 md:pt-36 pb-8 sm:pb-12 px-4 sm:px-6 max-w-7xl mx-auto">
         {/* Statistiques */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8 mt-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border-2 border-slate-200 shadow-lg hover:shadow-xl transition-all"
+            className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border-2 border-slate-200 shadow-lg hover:shadow-xl transition-all"
           >
             <div className="flex items-center justify-between">
               <div>
@@ -1093,11 +1093,11 @@ const AdminDashboard = () => {
                   </div>
 
                   {/* Table des commandes */}
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
+                  <div className="overflow-x-auto -mx-4 sm:mx-0">
+                    <table className="w-full min-w-[800px] sm:min-w-0">
                       <thead>
                         <tr className="border-b-2 border-slate-200">
-                          <th className="text-left py-3 px-4">
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4">
                             <input
                               type="checkbox"
                               checked={(postalCodeFilter ? filteredCampaigns : campaigns).filter(c => c.status === 'CREATED' && c.printing_status !== 'SENT_TO_PRINT').length > 0 && 
@@ -1106,15 +1106,15 @@ const AdminDashboard = () => {
                               className="w-4 h-4 text-[#A67C52] rounded"
                             />
                           </th>
-                          <th className="text-left py-3 px-4 font-semibold text-slate-700">N° Commande</th>
-                          <th className="text-left py-3 px-4 font-semibold text-slate-700">Nom</th>
-                          <th className="text-left py-3 px-4 font-semibold text-slate-700">Client</th>
-                          <th className="text-left py-3 px-4 font-semibold text-slate-700">Partenaire</th>
-                          <th className="text-left py-3 px-4 font-semibold text-slate-700">Quantité</th>
-                          <th className="text-left py-3 px-4 font-semibold text-slate-700">Prix</th>
-                          <th className="text-left py-3 px-4 font-semibold text-slate-700">Statut</th>
-                          <th className="text-left py-3 px-4 font-semibold text-slate-700">Date</th>
-                          <th className="text-left py-3 px-4 font-semibold text-slate-700">Actions</th>
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm">N°</th>
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm">Nom</th>
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm hidden lg:table-cell">Client</th>
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm">Partenaire</th>
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm">Qté</th>
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm hidden md:table-cell">Prix</th>
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm">Statut</th>
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm hidden lg:table-cell">Date</th>
+                          <th className="text-left py-2 sm:py-3 px-2 sm:px-4 font-semibold text-slate-700 text-xs sm:text-sm">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1136,7 +1136,7 @@ const AdminDashboard = () => {
                                 animate={{ opacity: 1 }}
                                 className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
                               >
-                                <td className="py-3 px-4">
+                                <td className="py-2 sm:py-3 px-2 sm:px-4">
                                   {isSelectable && (
                                     <input
                                       type="checkbox"
@@ -1160,11 +1160,11 @@ const AdminDashboard = () => {
                                     <span className="text-slate-400 text-xs italic">-</span>
                                   )}
                                 </td>
-                                <td className="py-3 px-4 text-slate-700">1 000</td>
-                                <td className="py-3 px-4 text-slate-700">
+                                <td className="py-2 sm:py-3 px-2 sm:px-4 text-slate-700 text-xs sm:text-sm">1 000</td>
+                                <td className="py-2 sm:py-3 px-2 sm:px-4 text-slate-700 text-xs sm:text-sm hidden md:table-cell">
                                   {campaign.estimated_price ? `${parseFloat(campaign.estimated_price).toFixed(2)} €` : 'N/A'}
                                 </td>
-                                <td className="py-3 px-4">
+                                <td className="py-2 sm:py-3 px-2 sm:px-4">
                                   <select
                                     value={campaign.status}
                                     onChange={(e) => handleUpdateCampaignStatus(campaign.id, e.target.value)}
@@ -1183,12 +1183,12 @@ const AdminDashboard = () => {
                                     <option value="FINISHED">Terminée</option>
                                   </select>
                                 </td>
-                                <td className="py-3 px-4 text-slate-600 text-sm">
+                                <td className="py-2 sm:py-3 px-2 sm:px-4 text-slate-600 text-xs sm:text-sm hidden lg:table-cell">
                                   {campaign.created_at
                                     ? format(new Date(campaign.created_at), 'dd/MM/yyyy', { locale: fr })
                                     : 'N/A'}
                                 </td>
-                                <td className="py-3 px-4">
+                                <td className="py-2 sm:py-3 px-2 sm:px-4">
                                   <motion.button
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}

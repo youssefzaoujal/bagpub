@@ -24,7 +24,7 @@ import {
   Package, TrendingUp, MapPin, Plus, Calendar, Users, Eye, Edit, Trash2, 
   Building2, DollarSign, Target, MessageSquare, CheckCircle, Clock, Truck, 
   Search, Filter, X, ArrowRight, ArrowLeft, LayoutDashboard, LogOut, 
-  BarChart3, Mail, Phone, Globe, Building, CreditCard, User, Home, 
+  BarChart3, Mail, Phone, Globe, Building, CreditCard, User, Home, Menu, 
   Bell, Settings, Download, MoreVertical, Award, RefreshCw, ExternalLink,
   ChevronRight, UploadCloud, Shield, Megaphone, Rocket, ArrowUpRight,
   Printer, Share2, Loader2, AlertCircle, Info, Sparkles, Zap, Crown, 
@@ -889,6 +889,7 @@ const ClientDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Debounce pour les recherches - évite trop d'updates
   useEffect(() => {
@@ -1115,11 +1116,11 @@ const ClientDashboard = () => {
         animate={{ y: 0 }}
         className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200"
       >
-        <div className="max-w-7xl mx-auto px-6 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3 sm:gap-6">
               <div className="flex items-center">
-                <img src={logo} alt="BagPub Logo" className="w-28 h-28 object-contain" />
+                <img src={logo} alt="BagPub Logo" className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 object-contain" />
               </div>
 
               <div className="hidden md:flex items-center gap-1">
@@ -1144,21 +1145,31 @@ const ClientDashboard = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               {/* Boutons client */}
               {user?.role === 'client' && (
-                <div className="flex items-center gap-2">
+                <div className="hidden sm:flex items-center gap-2">
                   <button
                     onClick={handleCreateCampaign}
-                    className="px-4 py-2 bg-gradient-to-r from-[#A67C52] to-yellow-600 text-white rounded-xl font-medium hover:from-[#A67C52]/90 hover:to-yellow-600/90 transition-colors flex items-center gap-2 shadow-lg"
+                    className="px-3 sm:px-4 py-2 bg-gradient-to-r from-[#A67C52] to-yellow-600 text-white rounded-xl font-medium hover:from-[#A67C52]/90 hover:to-yellow-600/90 transition-colors flex items-center gap-2 shadow-lg text-sm sm:text-base"
                   >
                     <Plus className="w-4 h-4" />
-                    Nouvelle campagne
+                    <span className="hidden sm:inline">Nouvelle campagne</span>
+                    <span className="sm:hidden">Nouvelle</span>
                   </button>
                 </div>
               )}
               
-              <div className="flex items-center gap-3">
+              {/* Menu hamburger mobile */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition-colors"
+                aria-label="Menu"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6 text-slate-700" /> : <Menu className="w-6 h-6 text-slate-700" />}
+              </button>
+              
+              <div className="flex items-center gap-2 sm:gap-3">
                 <div className="text-right hidden sm:block">
                   <p className="text-sm font-medium text-slate-900">
                     {user?.company_name || user?.username || 'Utilisateur'}
@@ -1193,10 +1204,58 @@ const ClientDashboard = () => {
             </div>
           </div>
         </div>
+        
+        {/* Menu mobile */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-slate-200 bg-white/95 backdrop-blur-sm"
+            >
+              <div className="px-4 py-4 space-y-2">
+                {[
+                  { id: 'dashboard', icon: LayoutDashboard, label: 'Tableau de bord' },
+                  { id: 'campagnes', icon: Target, label: 'Mes Campagnes' },
+                  { id: 'profile', icon: User, label: 'Profil' },
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setActiveTab(item.id);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm ${
+                      activeTab === item.id 
+                        ? 'bg-slate-900 text-white shadow-lg' 
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                    }`}
+                  >
+                    <item.icon className="w-5 h-5" />
+                    <span>{item.label}</span>
+                  </button>
+                ))}
+                {user?.role === 'client' && (
+                  <button
+                    onClick={() => {
+                      handleCreateCampaign();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#A67C52] to-yellow-600 text-white rounded-xl font-medium hover:from-[#A67C52]/90 hover:to-yellow-600/90 transition-colors shadow-lg"
+                  >
+                    <Plus className="w-5 h-5" />
+                    <span>Nouvelle campagne</span>
+                  </button>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
 
       {/* CONTENU PRINCIPAL */}
-      <div className="pt-36 px-6 pb-12 max-w-7xl mx-auto">
+      <div className="pt-24 sm:pt-28 md:pt-36 px-4 sm:px-6 pb-8 sm:pb-12 max-w-7xl mx-auto">
         <AnimatePresence mode="wait">
           {activeTab === 'dashboard' ? (
             // TABLEAU DE BORD
@@ -1211,22 +1270,23 @@ const ClientDashboard = () => {
                   <h1 className="text-3xl font-bold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent mb-2">
                     {user?.role === 'admin' ? 'Tableau de bord Admin' : `Bonjour, ${user?.company_name || user?.username || 'Utilisateur'}`}
                   </h1>
-                  <p className="text-slate-600 font-medium">
+                  <p className="text-sm sm:text-base text-slate-600 font-medium">
                     {user?.role === 'admin' 
                       ? 'Gérez les campagnes et les partenaires' 
                       : 'Bienvenue sur votre tableau de bord BagPub'}
                   </p>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={fetchCampaigns}
                     disabled={loading}
-                    className="px-5 py-2.5 bg-gradient-to-r from-[#A67C52] to-yellow-600 text-white rounded-xl font-medium transition-all disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                    className="px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#A67C52] to-yellow-600 text-white rounded-xl font-medium transition-all disabled:opacity-50 flex items-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base"
                   >
                     <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-                    {loading ? 'Chargement...' : 'Rafraîchir'}
+                    <span className="hidden sm:inline">{loading ? 'Chargement...' : 'Rafraîchir'}</span>
+                    <span className="sm:hidden">{loading ? '...' : '↻'}</span>
                   </motion.button>
                 </div>
               </motion.div>
@@ -1409,10 +1469,10 @@ const ClientDashboard = () => {
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl border-2 border-[#A67C52]/20 shadow-xl p-6"
+                className="bg-white/80 backdrop-blur-sm rounded-2xl border-2 border-[#A67C52]/20 shadow-xl p-4 sm:p-6"
               >
                 <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 sm:gap-4">
                     <div className="relative flex-1 md:w-64">
                       <Search className="w-4 h-4 text-[#A67C52] absolute left-3 top-1/2 transform -translate-y-1/2" />
                       <input
@@ -1431,32 +1491,32 @@ const ClientDashboard = () => {
                       <Filter className="w-5 h-5" />
                     </motion.button>
                   </div>
-                  <div className="flex items-center gap-2 flex-wrap">
+                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                     <motion.button 
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-[#A67C52] to-yellow-600 rounded-xl shadow-md hover:shadow-lg"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-[#A67C52] to-yellow-600 rounded-xl shadow-md hover:shadow-lg"
                     >
                       Toutes
                     </motion.button>
                     <motion.button 
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 rounded-xl hover:bg-slate-200 shadow-sm"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-slate-700 bg-slate-100 rounded-xl hover:bg-slate-200 shadow-sm"
                     >
                       En attente
                     </motion.button>
                     <motion.button 
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 rounded-xl hover:bg-slate-200 shadow-sm"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-slate-700 bg-slate-100 rounded-xl hover:bg-slate-200 shadow-sm"
                     >
                       En cours
                     </motion.button>
                     <motion.button 
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 rounded-xl hover:bg-slate-200 shadow-sm"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-slate-700 bg-slate-100 rounded-xl hover:bg-slate-200 shadow-sm"
                     >
                       Terminées
                     </motion.button>
@@ -1483,17 +1543,17 @@ const ClientDashboard = () => {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           whileHover={{ scale: 1.01, x: 4 }}
-                          className="p-6 bg-white/80 backdrop-blur-sm rounded-xl border-2 border-slate-200 hover:border-[#A67C52]/30 hover:shadow-lg transition-all"
+                          className="p-4 sm:p-6 bg-white/80 backdrop-blur-sm rounded-xl border-2 border-slate-200 hover:border-[#A67C52]/30 hover:shadow-lg transition-all"
                         >
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                              <div className="w-12 h-12 bg-gradient-to-br from-[#A67C52]/20 to-yellow-100 rounded-xl flex items-center justify-center">
-                                <Building2 className="w-6 h-6 text-[#A67C52]" />
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                            <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#A67C52]/20 to-yellow-100 rounded-xl flex items-center justify-center shrink-0">
+                                <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-[#A67C52]" />
                               </div>
-                              <div>
-                                <h3 className="font-bold text-slate-900">{campaign.name}</h3>
-                                <p className="text-sm text-slate-600">#{campaign.order_number}</p>
-                                <div className="flex items-center gap-2 mt-1">
+                              <div className="min-w-0 flex-1">
+                                <h3 className="font-bold text-slate-900 text-sm sm:text-base truncate">{campaign.name}</h3>
+                                <p className="text-xs sm:text-sm text-slate-600">#{campaign.order_number}</p>
+                                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-2">
                                   <span className="text-xs px-3 py-1.5 rounded-full bg-gradient-to-r from-slate-100 to-slate-200 text-slate-700 font-semibold shadow-sm">
                                     1 000 sacs
                                   </span>
@@ -1517,7 +1577,29 @@ const ClientDashboard = () => {
                               </div>
                             </div>
                             
-                            <div className="flex items-center gap-6">
+                            {/* Status sur mobile - au-dessus des boutons */}
+                            <div className="sm:hidden pb-3 border-b border-slate-100">
+                              <div className="flex items-center justify-between">
+                                <span className={`text-xs px-2.5 py-1 rounded-full font-semibold ${getStatusColor(campaign.status)}`}>
+                                  {campaign.status === 'CREATED' ? 'Créée' :
+                                   campaign.status === 'ASSIGNED_TO_PARTNER' ? 'Attribuée' :
+                                   campaign.status === 'SENT_TO_PRINT' ? 'Envoyée print' :
+                                   campaign.status === 'IN_PRINTING' ? 'En impression' :
+                                   campaign.status === 'PRINTED' ? 'Imprimée' :
+                                   campaign.status === 'IN_DISTRIBUTION' ? 'En distribution' :
+                                   campaign.status === 'DELIVERED' ? 'Livrée' : 'Terminée'}
+                                </span>
+                                <span className="text-xs text-slate-600">
+                                  {(() => {
+                                    if (!campaign.postal_codes) return '0 codes';
+                                    const codes = campaign.postal_codes.toString().split(',').filter(c => c && c.trim());
+                                    return codes.length > 0 ? `${codes.length} codes` : '0 codes';
+                                  })()}
+                                </span>
+                              </div>
+                            </div>
+                            
+                            <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-6">
                               <div className="text-right hidden md:block">
                                 <p className="text-sm font-medium text-slate-900">
                                   {campaign.status === 'CREATED' ? 'Créée' :
@@ -1536,7 +1618,7 @@ const ClientDashboard = () => {
                                   })()}
                                 </p>
                               </div>
-                              <div className="flex items-center gap-2">
+                              <div className="flex items-center gap-1.5 sm:gap-2">
                                 <motion.button
                                   whileHover={{ scale: 1.1, rotate: 5 }}
                                   whileTap={{ scale: 0.9 }}

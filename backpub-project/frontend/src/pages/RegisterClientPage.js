@@ -206,32 +206,32 @@ const RegisterClientPage = () => {
       </div>
 
       {/* === DROITE (FORMULAIRE) === */}
-      <div className="w-full lg:w-1/2 flex flex-col items-center p-6 relative z-10 overflow-y-auto">
+      <div className="w-full lg:w-1/2 flex flex-col items-center p-4 sm:p-6 relative z-10 overflow-y-auto">
         {/* Mobile Logo */}
-        <div className="lg:hidden absolute top-8 left-8">
-          <img src={logo} alt="BagPub Logo" className="w-28 h-28 object-contain" />
+        <div className="lg:hidden absolute top-4 sm:top-8 left-4 sm:left-8">
+          <img src={logo} alt="BagPub Logo" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
         </div>
 
         {/* Back button */}
         <Link 
           to="/" 
-          className="lg:hidden absolute top-8 right-8 flex items-center gap-2 text-sm text-slate-600 hover:text-slate-800 transition-colors group font-medium"
+          className="lg:hidden absolute top-4 sm:top-8 right-4 sm:right-8 flex items-center gap-2 text-xs sm:text-sm text-slate-600 hover:text-slate-800 transition-colors group font-medium"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Accueil
+          <span className="hidden sm:inline">Accueil</span>
         </Link>
 
-        <div className="w-full max-w-[500px] mt-20 lg:mt-0 lg:py-16">
-          <div className="bg-white/90 backdrop-blur-sm border-2 border-[#A67C52]/20 rounded-[2.5rem] shadow-2xl shadow-[#A67C52]/10 relative overflow-hidden">
+        <div className="w-full max-w-[500px] mt-16 sm:mt-20 lg:mt-0 lg:py-16">
+          <div className="bg-white/90 backdrop-blur-sm border-2 border-[#A67C52]/20 rounded-2xl sm:rounded-[2.5rem] shadow-2xl shadow-[#A67C52]/10 relative overflow-hidden">
              
-            <div className="p-8 md:p-12 relative z-10">
+            <div className="p-6 sm:p-8 md:p-12 relative z-10">
               {/* Header */}
-              <div className="text-center mb-10">
-                <div className="inline-flex p-4 rounded-2xl bg-gradient-to-r from-[#A67C52]/10 to-yellow-50 border-2 border-[#A67C52]/20 mb-6 shadow-lg shadow-[#A67C52]/10">
-                  <User className="w-8 h-8 text-[#A67C52]" />
+              <div className="text-center mb-8 sm:mb-10">
+                <div className="inline-flex p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#A67C52]/10 to-yellow-50 border-2 border-[#A67C52]/20 mb-4 sm:mb-6 shadow-lg shadow-[#A67C52]/10">
+                  <User className="w-6 h-6 sm:w-8 sm:h-8 text-[#A67C52]" />
                 </div>
-                <h2 className="text-3xl font-extrabold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent mb-2">Inscription Client</h2>
-                <p className="text-slate-600 font-medium">
+                <h2 className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent mb-2">Inscription Client</h2>
+                <p className="text-sm sm:text-base text-slate-600 font-medium">
                   Rejoignez la plateforme BagPub et multipliez votre visibilité
                 </p>
               </div>

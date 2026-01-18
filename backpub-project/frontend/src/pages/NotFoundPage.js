@@ -13,16 +13,16 @@ const NotFoundPage = () => {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#f8f5f2] via-yellow-50/20 to-orange-50/10 font-sans overflow-hidden text-slate-800 relative">
       <KraftBackground />
       
-      <div className="flex-1 flex items-center justify-center p-6 relative z-10">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-6 relative z-10">
         <div className="max-w-2xl w-full text-center">
           {/* Logo */}
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: "spring" }}
-            className="mb-8"
+            className="mb-6 sm:mb-8"
           >
-            <img src={logo} alt="BagPub Logo" className="w-32 h-32 mx-auto object-contain" />
+            <img src={logo} alt="BagPub Logo" className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto object-contain" />
           </motion.div>
 
           {/* 404 Animation */}
@@ -42,7 +42,7 @@ const NotFoundPage = () => {
                 repeat: Infinity,
                 repeatType: "reverse",
               }}
-              className="text-9xl md:text-[12rem] font-extrabold bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 bg-clip-text text-transparent mb-4"
+              className="text-7xl sm:text-9xl md:text-[12rem] font-extrabold bg-gradient-to-r from-[#A67C52] via-yellow-600 to-orange-600 bg-clip-text text-transparent mb-4"
             >
               404
             </motion.div>
@@ -51,10 +51,10 @@ const NotFoundPage = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.4, type: "spring" }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border-2 border-red-200 text-red-700 mb-6"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-red-50 border-2 border-red-200 text-red-700 mb-4 sm:mb-6"
             >
-              <AlertCircle className="w-5 h-5" />
-              <span className="font-bold text-sm">Page non trouvée</span>
+              <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="font-bold text-xs sm:text-sm">Page non trouvée</span>
             </motion.div>
           </motion.div>
 
@@ -63,12 +63,12 @@ const NotFoundPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="mb-12"
+            className="mb-8 sm:mb-12"
           >
-            <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 sm:mb-4">
               Oups ! Cette page n'existe pas
             </h1>
-            <p className="text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
               La page que vous recherchez semble avoir été déplacée ou n'existe plus.
               <br className="hidden md:block" />
               Ne vous inquiétez pas, nous pouvons vous aider à retrouver votre chemin !

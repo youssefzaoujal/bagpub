@@ -430,7 +430,7 @@ const CustomCardMode = ({ formData, setFormData, loading }) => {
         </div>
         
         {/* Zone d'upload */}
-        <div className="border-3 border-dashed border-gray-300 rounded-3xl p-12 text-center hover:border-blue-500 transition-colors bg-gradient-to-br from-gray-50 to-white">
+        <div className="border-3 border-dashed border-gray-300 rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center hover:border-blue-500 transition-colors bg-gradient-to-br from-gray-50 to-white">
           <input
             type="file"
             onChange={handleFileUpload}

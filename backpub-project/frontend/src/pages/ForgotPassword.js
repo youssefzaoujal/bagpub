@@ -31,7 +31,7 @@ function ForgotPassword() {
   };
 
   return React.createElement('div', {
-    className: 'min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 font-sans p-6'
+    className: 'min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 font-sans p-4 sm:p-6'
   },
     // Background FX
     React.createElement('div', {
@@ -52,7 +52,7 @@ function ForgotPassword() {
     },
       // Card
       React.createElement('div', {
-        className: 'bg-white/80 backdrop-blur-2xl border border-white/80 p-8 rounded-[2rem] shadow-2xl shadow-slate-300/30'
+        className: 'bg-white/80 backdrop-blur-2xl border border-white/80 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] shadow-2xl shadow-slate-300/30'
       },
         // Header
         React.createElement('div', { className: 'text-center mb-8' },
@@ -62,10 +62,10 @@ function ForgotPassword() {
             React.createElement(Shield, { className: 'w-8 h-8 text-blue-600' })
           ),
           React.createElement('h2', {
-            className: 'text-3xl font-extrabold text-slate-900 mb-2'
+            className: 'text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2'
           }, step === 1 ? 'Mot de passe oublié' : 'Email envoyé'),
           React.createElement('p', {
-            className: 'text-slate-500 font-medium'
+            className: 'text-sm sm:text-base text-slate-500 font-medium'
           }, step === 1 
             ? 'Entrez votre email pour recevoir un lien de réinitialisation'
             : 'Vérifiez votre boîte email'

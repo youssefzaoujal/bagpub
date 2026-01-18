@@ -116,7 +116,7 @@ const CampaignLanding = () => {
           <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"></div>
           
           {design.logo && (
-            <div className="relative mx-auto w-28 h-28 mb-6 bg-white rounded-2xl shadow-lg p-3 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-500">
+            <div className="relative mx-auto w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 mb-4 sm:mb-6 bg-white rounded-xl sm:rounded-2xl shadow-lg p-2 sm:p-3 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-500">
               <img 
                 src={design.logo} 
                 alt={company.company_name} 
@@ -126,12 +126,12 @@ const CampaignLanding = () => {
             </div>
           )}
           
-          <h1 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 mb-2">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 mb-2">
             {company.company_name}
           </h1>
           
           {design.slogan && (
-            <p className="text-lg text-slate-500 font-medium italic mb-6">"{design.slogan}"</p>
+            <p className="text-base sm:text-lg text-slate-500 font-medium italic mb-4 sm:mb-6">"{design.slogan}"</p>
           )}
 
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-sm font-semibold tracking-wide border border-indigo-100">
@@ -147,7 +147,7 @@ const CampaignLanding = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* QR CARD */}
-          <section className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-3xl p-8 text-white shadow-xl flex flex-col items-center justify-center text-center relative overflow-hidden">
+          <section className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col items-center justify-center text-center relative overflow-hidden">
              {/* Cercles déco */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-xl"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-8 -mb-8 blur-xl"></div>

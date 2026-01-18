@@ -173,10 +173,10 @@ const RegisterPartnerPage = () => {
       </div>
 
       {/* === DROITE (FORMULAIRE) === */}
-      <div className="w-full lg:w-1/2 flex flex-col items-center p-6 relative z-10 overflow-y-auto">
+      <div className="w-full lg:w-1/2 flex flex-col items-center p-4 sm:p-6 relative z-10 overflow-y-auto">
         {/* Mobile Logo */}
-        <div className="lg:hidden absolute top-8 left-8">
-          <img src={logo} alt="BagPub Logo" className="w-28 h-28 object-contain" />
+        <div className="lg:hidden absolute top-4 sm:top-8 left-4 sm:left-8">
+          <img src={logo} alt="BagPub Logo" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
         </div>
 
         {/* Back button */}

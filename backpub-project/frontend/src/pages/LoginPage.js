@@ -140,16 +140,16 @@ function LoginPage() {
       </div>
 
       {/* === DROITE (FORMULAIRE) === */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-6 relative z-10">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-4 sm:p-6 relative z-10">
         
         {/* Mobile Logo */}
-        <div className="lg:hidden absolute top-8 left-8">
-          <img src={logo} alt="BagPub Logo" className="w-28 h-28 object-contain" />
+        <div className="lg:hidden absolute top-4 sm:top-8 left-4 sm:left-8">
+          <img src={logo} alt="BagPub Logo" className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
         </div>
 
-        <div className="w-full max-w-[440px] mt-16 lg:mt-0">
+        <div className="w-full max-w-[440px] mt-12 sm:mt-16 lg:mt-0">
           {/* Carte Glassmorphism Kraft */}
-          <div className="bg-white/90 backdrop-blur-sm border-2 border-[#A67C52]/20 p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-[#A67C52]/10 relative overflow-hidden">
+          <div className="bg-white/90 backdrop-blur-sm border-2 border-[#A67C52]/20 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-[2.5rem] shadow-2xl shadow-[#A67C52]/10 relative overflow-hidden">
              
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -165,10 +165,10 @@ function LoginPage() {
               >
                 <Lock className="w-8 h-8 text-[#A67C52]" />
               </motion.div>
-              <h2 className="text-3xl font-extrabold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent mb-2">
+              <h2 className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-[#A67C52] to-yellow-600 bg-clip-text text-transparent mb-2">
                 Connexion BagPub
               </h2>
-              <p className="text-slate-600 font-medium">Accédez à votre espace personnel en toute sécurité</p>
+              <p className="text-sm sm:text-base text-slate-600 font-medium">Accédez à votre espace personnel en toute sécurité</p>
             </motion.div>
 
             {error && (
