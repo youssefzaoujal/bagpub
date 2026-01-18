@@ -158,17 +158,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'api.User'
 
 # CORS settings
+# SOLUTION FORCÉE : Toujours inclure l'URL Vercel en production
+vercel_frontend_url = 'https://bagpub.vercel.app'
+
 # En production, on doit spécifier les origines autorisées
 # Nettoyer les URLs : retirer les espaces et les '/' à la fin
 cors_origins_raw = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000')
-CORS_ALLOWED_ORIGINS = [
-    origin.strip().rstrip('/') for origin in cors_origins_raw.split(',') if origin.strip()
-]
 
-# FORCER l'ajout de l'URL Vercel si elle n'est pas déjà présente
-vercel_frontend_url = 'https://bagpub.vercel.app'
+# Initialiser la liste avec l'URL Vercel D'ABORD (garantit qu'elle est toujours présente)
+CORS_ALLOWED_ORIGINS = [vercel_frontend_url] if not DEBUG else []
+
+# Ajouter les origines de la variable d'environnement (sans doublons)
+for origin in cors_origins_raw.split(','):
+    clean_origin = origin.strip().rstrip('/')
+    if clean_origin and clean_origin not in CORS_ALLOWED_ORIGINS:
+        CORS_ALLOWED_ORIGINS.append(clean_origin)
+
+# FORCER l'ajout de l'URL Vercel si elle n'est pas déjà présente (double vérification)
 if vercel_frontend_url not in CORS_ALLOWED_ORIGINS:
-    CORS_ALLOWED_ORIGINS.append(vercel_frontend_url)
+    CORS_ALLOWED_ORIGINS.insert(0, vercel_frontend_url)  # Insérer au début
 
 # Ajouter aussi le domaine Railway du frontend si spécifié
 if os.environ.get('FRONTEND_URL'):
@@ -176,7 +184,8 @@ if os.environ.get('FRONTEND_URL'):
     if frontend_url and frontend_url not in CORS_ALLOWED_ORIGINS:
         CORS_ALLOWED_ORIGINS.append(frontend_url)
 
-CORS_ALLOW_ALL_ORIGINS = DEBUG  # Seulement en mode debug
+# En production, NE JAMAIS autoriser toutes les origines (sécurité)
+CORS_ALLOW_ALL_ORIGINS = False  # FORCÉ à False en production
 CORS_ALLOW_CREDENTIALS = True
 
 # Logging CORS pour débogage - FORCÉ en production pour voir ce qui se passe
