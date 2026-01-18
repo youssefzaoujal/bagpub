@@ -45,8 +45,9 @@ MIDDLEWARE = [
 ]
 
 # Sécurité renforcée
+# IMPORTANT: Désactiver SECURE_SSL_REDIRECT pour éviter les redirections lors des preflight requests CORS
 if not DEBUG:
-    SECURE_SSL_REDIRECT = True
+    # SECURE_SSL_REDIRECT = True  # Désactivé pour éviter les conflits avec CORS preflight
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
@@ -158,9 +159,33 @@ AUTH_USER_MODEL = 'api.User'
 
 # CORS settings
 # En production, on doit spécifier les origines autorisées
-CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
+CORS_ALLOWED_ORIGINS = [
+    origin.strip() for origin in os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',') if origin.strip()
+]
 CORS_ALLOW_ALL_ORIGINS = DEBUG  # Seulement en mode debug
 CORS_ALLOW_CREDENTIALS = True
+
+# CORS headers et méthodes supplémentaires pour les preflight requests
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
 # REST Framework settings - Optimisé pour performance
 REST_FRAMEWORK = {
