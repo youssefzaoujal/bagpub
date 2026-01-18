@@ -1,0 +1,60 @@
+{% extends 'emails/base.html' %}
+
+{% block icon %}🤝{% endblock %}
+{% block header_title %}Demande de partenariat reçue !{% endblock %}
+
+{% block content %}
+<div class="greeting">
+    <p>Bonjour <strong>{{ company_name }}</strong>,</p>
+</div>
+
+<div class="content-section">
+    <p>Nous avons bien reçu votre demande de partenariat pour <strong>BagPub</strong> !</p>
+    
+    <div class="info-box">
+        <p style="margin-bottom: 10px;"><strong>📋 Votre demande est en cours d'examen.</strong></p>
+        <p style="color: #666; font-size: 14px;">Notre équipe va examiner votre profil et vous contactera dans les plus brefs délais.</p>
+    </div>
+
+    <h2>📊 Informations de votre demande</h2>
+    
+    <div class="content-section">
+        <div class="info-row">
+            <span class="info-label">Entreprise</span>
+            <span class="info-value">{{ company_name }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Email</span>
+            <span class="info-value">{{ email }}</span>
+        </div>
+        {% if phone %}
+        <div class="info-row">
+            <span class="info-label">Téléphone</span>
+            <span class="info-value">{{ phone }}</span>
+        </div>
+        {% endif %}
+        {% if city %}
+        <div class="info-row">
+            <span class="info-label">Ville</span>
+            <span class="info-value">{{ city }}</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="alert-box alert-warning">
+        <p><strong>⏳ Prochaines étapes :</strong></p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li>Examen de votre profil par notre équipe</li>
+            <li>Validation de votre compte</li>
+            <li>Envoi de vos identifiants de connexion</li>
+            <li>Prise en main de la plateforme</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <p><strong>Des questions ?</strong></p>
+        <p>N'hésitez pas à nous contacter à <a href="mailto:partners@bagpub.com" style="color: #A67C52;">partners@bagpub.com</a></p>
+    </div>
+
+    <p style="margin-top: 30px;">Cordialement,<br><strong>L'équipe BagPub</strong></p>
+{% endblock %}

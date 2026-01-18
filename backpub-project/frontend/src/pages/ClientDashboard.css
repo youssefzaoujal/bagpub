@@ -1,0 +1,558 @@
+/* ClientDashboard.css */
+.client-dashboard {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.header-left h1 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 28px;
+}
+
+.welcome-message {
+  margin: 8px 0 0 0;
+  color: #718096;
+  font-size: 16px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn-new-campaign {
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-new-campaign:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(66, 153, 225, 0.3);
+}
+
+.btn-logout {
+  background: #fc8181;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background: #f56565;
+  transform: translateY(-2px);
+}
+
+/* Statistiques */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  font-size: 36px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-content h3 {
+  margin: 0 0 8px 0;
+  color: #718096;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-number {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+/* Section campagnes */
+.campaigns-section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 24px;
+}
+
+.campaigns-summary {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  color: #718096;
+  font-size: 14px;
+}
+
+.summary-item {
+  font-weight: 500;
+}
+
+.separator {
+  color: #cbd5e0;
+}
+
+/* Table */
+.campaigns-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.campaigns-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.campaigns-table th {
+  background: #f7fafc;
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 2px solid #e2e8f0;
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.campaigns-table td {
+  padding: 20px;
+  border-bottom: 1px solid #edf2f7;
+  vertical-align: middle;
+}
+
+.campaigns-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.campaigns-table tbody tr.even {
+  background: #fafafa;
+}
+
+/* Cellules spécifiques */
+.order-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-number {
+  font-weight: 700;
+  color: #4299e1;
+  font-size: 15px;
+}
+
+.order-date {
+  font-size: 12px;
+  color: #a0aec0;
+  margin-top: 4px;
+}
+
+.campaign-name {
+  font-weight: 500;
+  color: #4a5568;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Badges de statut */
+.status-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-created {
+  background: #e6fffa;
+  color: #234e52;
+}
+
+.status-in_printing {
+  background: #fffaf0;
+  color: #c05621;
+}
+
+.status-printed {
+  background: #f0fff4;
+  color: #276749;
+}
+
+.status-in_distribution {
+  background: #faf5ff;
+  color: #553c9a;
+}
+
+.status-delivered {
+  background: #ebf8ff;
+  color: #2c5282;
+}
+
+/* Quantité */
+.quantity-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quantity-number {
+  font-weight: 700;
+  color: #2d3748;
+  font-size: 18px;
+}
+
+.quantity-label {
+  font-size: 12px;
+  color: #a0aec0;
+  margin-top: 4px;
+}
+
+/* Section site web */
+.website-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.website-url {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f7fafc;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.website-icon {
+  font-size: 16px;
+}
+
+.url-preview {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #4a5568;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.no-website {
+  color: #a0aec0;
+  font-style: italic;
+  font-size: 13px;
+}
+
+.design-required {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e53e3e;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.required-icon {
+  font-size: 16px;
+}
+
+/* Boutons d'action */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-view-site, .btn-copy-link, .btn-qr-code {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-view-site {
+  background: #4299e1;
+  color: white;
+}
+
+.btn-view-site:hover {
+  background: #3182ce;
+  transform: translateY(-2px);
+}
+
+.btn-copy-link {
+  background: #edf2f7;
+  color: #4a5568;
+  border: 1px solid #cbd5e0;
+}
+
+.btn-copy-link:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.btn-qr-code {
+  background: #9f7aea;
+  color: white;
+}
+
+.btn-qr-code:hover {
+  background: #805ad5;
+  transform: translateY(-2px);
+}
+
+/* États de chargement et vide */
+.loading-container {
+  text-align: center;
+  padding: 60px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e2e8f0;
+  border-top: 4px solid #4299e1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  margin: 0 0 10px 0;
+  color: #4a5568;
+}
+
+.empty-state p {
+  color: #a0aec0;
+  margin-bottom: 30px;
+}
+
+.btn-create-first {
+  display: inline-block;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-create-first:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(72, 187, 120, 0.3);
+}
+
+/* Footer */
+.dashboard-footer {
+  text-align: center;
+  padding: 30px;
+  color: #718096;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 40px;
+}
+
+.dashboard-footer strong {
+  color: #4a5568;
+}
+
+.footer-stats {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.footer-stat {
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-new-campaign, .btn-logout {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+  
+  .btn-view-site, .btn-copy-link, .btn-qr-code {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+
+
+/* Ajouter ces styles à ClientDashboard.css */
+
+/* Bouton rafraîchir */
+.btn-refresh {
+  background: #48bb78;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-refresh:hover:not(:disabled) {
+  background: #38a169;
+  transform: translateY(-2px);
+}
+
+.btn-refresh:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Ajuster les actions du header */
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Améliorer le débogage dans la console */
+.url-section {
+  cursor: help; /* Indiquer que c'est cliquable pour le tooltip */
+}
+
+/* Correction pour les URLs longues */
+.url-text {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Ajouter un effet de hover sur les lignes du tableau */
+.campaigns-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.campaigns-table tbody tr:hover {
+  background-color: #f0f9ff;
+}

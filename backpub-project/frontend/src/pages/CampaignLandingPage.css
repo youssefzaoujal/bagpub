@@ -1,0 +1,435 @@
+/* src/pages/CampaignLandingPage.css */
+.campaign-landing-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Loading State */
+.landing-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error State */
+.landing-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+  background: #f8f9fa;
+}
+
+.landing-error h1 {
+  color: #e74c3c;
+  margin-bottom: 20px;
+}
+
+.landing-error p {
+  color: #7f8c8d;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.back-home {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.back-home:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Hero Section */
+.landing-hero {
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(30deg);
+}
+
+.landing-logo {
+  margin-bottom: 30px;
+}
+
+.landing-logo img {
+  max-width: 200px;
+  max-height: 100px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.company-name {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.company-slogan {
+  font-size: 1.5em;
+  font-style: italic;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.campaign-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 0.9em;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* About Section */
+.landing-about {
+  padding: 80px 0;
+  background: white;
+}
+
+.landing-about h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #2c3e50;
+  font-size: 2.5em;
+  position: relative;
+}
+
+.landing-about h2::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: #3498db;
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+.description {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #555;
+  text-align: center;
+}
+
+.description p {
+  margin-bottom: 20px;
+}
+
+.no-description {
+  text-align: center;
+  color: #7f8c8d;
+  font-style: italic;
+  margin-bottom: 60px;
+}
+
+.campaign-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.info-card {
+  background: #f8f9fa;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #e9ecef;
+}
+
+.info-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.info-icon {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.info-card h3 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.info-card p {
+  color: #7f8c8d;
+  margin: 0;
+}
+
+/* Contact Section */
+.landing-contact {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.landing-contact h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #2c3e50;
+  font-size: 2.5em;
+}
+
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-method {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: block;
+}
+
+.contact-method:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.method-icon {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.contact-method h3 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.contact-method p {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+  word-break: break-all;
+}
+
+.contact-button {
+  display: inline-block;
+  background: #3498db;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.contact-method:hover .contact-button {
+  background: #2980b9;
+}
+
+/* QR Code Section */
+.landing-qr {
+  padding: 80px 0;
+  background: white;
+}
+
+.landing-qr h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 2.5em;
+}
+
+.landing-qr > .container > p {
+  text-align: center;
+  color: #7f8c8d;
+  margin-bottom: 60px;
+  font-size: 1.1em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.qr-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #f8f9fa;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.qr-code {
+  text-align: center;
+}
+
+.qr-code img {
+  max-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-details {
+  padding: 20px;
+}
+
+.campaign-details h3 {
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+.campaign-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.campaign-details li {
+  padding: 12px 0;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+}
+
+.campaign-details li:last-child {
+  border-bottom: none;
+}
+
+.campaign-details strong {
+  min-width: 120px;
+  color: #34495e;
+}
+
+/* Footer */
+.landing-footer {
+  background: #2c3e50;
+  color: white;
+  padding: 60px 0;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.backpub-info h4 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #3498db;
+}
+
+.backpub-info p {
+  color: #bdc3c7;
+  margin: 5px 0;
+}
+
+.campaign-id {
+  text-align: right;
+}
+
+.campaign-id p {
+  color: #bdc3c7;
+  margin: 5px 0;
+}
+
+.footer-note {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #95a5a6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .company-name {
+    font-size: 2.5em;
+  }
+  
+  .company-slogan {
+    font-size: 1.2em;
+  }
+  
+  .campaign-info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-methods {
+    grid-template-columns: 1fr;
+  }
+  
+  .qr-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .campaign-id {
+    text-align: center;
+  }
+}

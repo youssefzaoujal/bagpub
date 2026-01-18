@@ -1,0 +1,156 @@
+/* src/pages/NotFoundPage.css */
+.not-found-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.not-found-container {
+  background: white;
+  padding: 60px 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.error-code {
+  font-size: 120px;
+  font-weight: 900;
+  color: #e74c3c;
+  line-height: 1;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.error-title {
+  font-size: 32px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.error-message {
+  font-size: 18px;
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.btn-home, .btn-login {
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s;
+  min-width: 160px;
+}
+
+.btn-home {
+  background: #3498db;
+  color: white;
+  border: 2px solid #3498db;
+}
+
+.btn-home:hover {
+  background: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+}
+
+.btn-login {
+  background: transparent;
+  color: #3498db;
+  border: 2px solid #3498db;
+}
+
+.btn-login:hover {
+  background: #3498db;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+}
+
+.help-section {
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+
+.help-section p {
+  color: #7f8c8d;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.help-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.help-links li {
+  margin: 0;
+}
+
+.help-links a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.help-links a:hover {
+  background: #f8f9fa;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .error-code {
+    font-size: 80px;
+  }
+  
+  .error-title {
+    font-size: 24px;
+  }
+  
+  .error-message {
+    font-size: 16px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-home, .btn-login {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .help-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

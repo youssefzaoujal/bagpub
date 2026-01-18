@@ -1,0 +1,67 @@
+{% extends 'emails/base.html' %}
+
+{% block icon %}✅{% endblock %}
+{% block header_title %}Commande créée avec succès !{% endblock %}
+
+{% block content %}
+<div class="greeting">
+    <p>Bonjour <strong>{{ client_name }}</strong>,</p>
+</div>
+
+<div class="content-section">
+    <p>Votre commande <strong>"{{ campaign_name }}"</strong> a été créée avec succès !</p>
+    
+    <div class="alert-box alert-success">
+        <p><strong>🎉 Félicitations !</strong></p>
+        <p style="margin-top: 10px;">Votre commande est maintenant enregistrée et notre équipe va commencer à la traiter.</p>
+    </div>
+
+    <h2>📦 Détails de votre commande</h2>
+    
+    <div class="content-section">
+        <div class="info-row">
+            <span class="info-label">Numéro de commande</span>
+            <span class="info-value">#{{ order_number }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Nom de la commande</span>
+            <span class="info-value">{{ campaign_name }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Quantité</span>
+            <span class="info-value">{{ quantity }} sacs</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Codes postaux</span>
+            <span class="info-value">{{ postal_codes }}</span>
+        </div>
+        {% if estimated_price %}
+        <div class="info-row">
+            <span class="info-label">Prix estimé</span>
+            <span class="info-value">{{ estimated_price }} €</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="alert-box alert-info">
+        <p><strong>⏭️ Prochaines étapes :</strong></p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li>Examen de votre commande par notre équipe</li>
+            <li>Attribution d'un partenaire pour la distribution</li>
+            <li>Mise en impression de vos cartes</li>
+            <li>Distribution dans les zones sélectionnées</li>
+        </ul>
+        <p style="margin-top: 15px;">Vous recevrez un email à chaque étape pour suivre l'avancement de votre commande.</p>
+    </div>
+
+    <div class="button-container">
+        <a href="{{ dashboard_url }}" class="button">Suivre ma commande</a>
+    </div>
+
+    <div class="content-section">
+        <p><strong>Besoin d'aide ?</strong></p>
+        <p>Contactez-nous à <a href="mailto:support@bagpub.com" style="color: #A67C52;">support@bagpub.com</a> si vous avez des questions.</p>
+    </div>
+
+    <p style="margin-top: 30px;">Cordialement,<br><strong>L'équipe BagPub</strong></p>
+{% endblock %}

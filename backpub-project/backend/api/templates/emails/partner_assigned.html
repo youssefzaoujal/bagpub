@@ -1,0 +1,109 @@
+{% extends 'emails/base.html' %}
+
+{% block icon %}🤝{% endblock %}
+{% block header_title %}Votre campagne est en cours d'impression !{% endblock %}
+
+{% block content %}
+<div class="greeting">
+    <p>Bonjour <strong>{{ client_name }}</strong>,</p>
+</div>
+
+<div class="content-section">
+    <p>Excellente nouvelle ! Votre campagne <strong>"{{ campaign_name }}"</strong> a été assignée à un partenaire et est maintenant <strong>en cours d'impression</strong>.</p>
+    
+    <div class="alert-box alert-success">
+        <p><strong>✅ Impression lancée</strong></p>
+        <p style="margin-top: 10px;">Vos cartes sont maintenant en cours d'impression. Nos équipes travaillent pour vous garantir une qualité optimale.</p>
+    </div>
+
+    <h2>🤝 Partenaire assigné</h2>
+    
+    <div class="info-box" style="background: linear-gradient(135deg, #f8f5f2 0%, #fff 100%); border: 2px solid #A67C52; padding: 25px; border-radius: 12px; margin: 25px 0;">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #A67C52 0%, #F59E0B 100%); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(166, 124, 82, 0.3);">
+                🏢
+            </div>
+            <h3 style="font-size: 22px; font-weight: 800; color: #1a202c; margin-bottom: 5px;">{{ partner_company_name }}</h3>
+            <p style="color: #64748b; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Partenaire Distributeur</p>
+        </div>
+        
+        <div class="content-section" style="margin-top: 20px;">
+            <div class="info-row">
+                <span class="info-label">📧 Email: </span>
+                <span class="info-value"><a href="mailto:{{ partner_email }}" style="color: #A67C52; text-decoration: none;">{{ partner_email }}</a></span>
+            </div>
+            {% if partner_phone %}
+            <div class="info-row">
+                <span class="info-label">📞 Téléphone: </span>
+                <span class="info-value"><a href="tel:{{ partner_phone }}" style="color: #A67C52; text-decoration: none;">{{ partner_phone }}</a></span>
+            </div>
+            {% endif %}
+            {% if partner_address %}
+            <div class="info-row">
+                <span class="info-label">📍 Adresse: </span>
+                <span class="info-value">{{ partner_address }}</span>
+            </div>
+            {% endif %}
+            {% if partner_city %}
+            <div class="info-row">
+                <span class="info-label">🏙️ Ville: </span>
+                <span class="info-value">{{ partner_city }}{% if partner_postal_code %} ({{ partner_postal_code }}){% endif %}</span>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div style="margin-top: 20px; padding: 15px; background: white; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <p style="text-align: center; color: #64748b; font-size: 14px; margin: 0; font-style: italic;">
+                💬 Ce partenaire vous contactera prochainement pour coordonner la distribution de vos sacs dans les zones sélectionnées.
+            </p>
+        </div>
+    </div>
+
+    <h2>📦 Détails de votre commande</h2>
+    
+    <div class="content-section">
+        <div class="info-row">
+            <span class="info-label">Numéro de commande: </span>
+            <span class="info-value">#{{ order_number }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Nom de la campagne: </span>
+            <span class="info-value">{{ campaign_name }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Quantité: </span>
+            <span class="info-value">{{ quantity }} sacs</span>
+        </div>
+        {% if postal_codes %}
+        <div class="info-row">
+            <span class="info-label">Codes postaux: </span>
+            <span class="info-value">{{ postal_codes }}</span>
+        </div>
+        {% endif %}
+        <div class="info-row">
+            <span class="info-label">Statut actuel: </span>
+            <span class="status-badge status-printing">En impression</span>
+        </div>
+    </div>
+
+    <div class="alert-box alert-info">
+        <p><strong>⏭️ Prochaines étapes :</strong></p>
+        <ul style="margin-left: 25px; margin-top: 10px;">
+            <li>Fin de l'impression de vos cartes</li>
+            <li>Coordination avec le partenaire pour la distribution</li>
+            <li>Distribution dans les zones sélectionnées</li>
+        </ul>
+        <p style="margin-top: 15px;">Vous recevrez un email à chaque étape pour suivre l'avancement de votre commande.</p>
+    </div>
+
+    <div class="button-container">
+        <a href="{{ dashboard_url }}" class="button">Suivre ma commande</a>
+    </div>
+
+    <div class="content-section">
+        <p><strong>Des questions ?</strong></p>
+        <p>Contactez-nous à <a href="mailto:support@bagpub.com" style="color: #A67C52;">support@bagpub.com</a> si vous avez des questions sur l'avancement de votre commande ou votre partenaire.</p>
+    </div>
+
+    <p style="margin-top: 30px;">Cordialement,<br><strong>L'équipe BagPub</strong></p>
+{% endblock %}

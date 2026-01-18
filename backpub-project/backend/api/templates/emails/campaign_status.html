@@ -1,0 +1,89 @@
+{% extends 'emails/base.html' %}
+
+{% block icon %}📊{% endblock %}
+{% block header_title %}Mise à jour de votre commande{% endblock %}
+
+{% block content %}
+<div class="greeting">
+    <p>Bonjour <strong>{{ client_name }}</strong>,</p>
+</div>
+
+<div class="content-section">
+    <p>Le statut de votre commande <strong>"{{ campaign_name }}"</strong> a été mis à jour.</p>
+    
+    <div class="info-box" style="background-color: #f8f9fa; border-left: 4px solid #A67C52; padding: 25px; border-radius: 8px; margin: 25px 0; text-align: center;">
+        <div style="margin-bottom: 15px;">
+            <span class="status-badge status-created">{{ old_status_label }}</span>
+        </div>
+        <div style="font-size: 24px; color: #A67C52; margin: 15px 0;">↓</div>
+        <div>
+            <span class="status-badge status-{% if new_status == 'ASSIGNED_TO_PARTNER' %}assigned{% elif new_status == 'IN_PRINTING' %}printing{% elif new_status == 'PRINTED' %}printed{% elif new_status == 'IN_DISTRIBUTION' %}distribution{% elif new_status == 'DELIVERED' %}delivered{% elif new_status == 'FINISHED' %}finished{% else %}created{% endif %}">{{ new_status_label }}</span>
+        </div>
+    </div>
+
+    <h2>📦 Détails de votre commande</h2>
+    
+    <div class="content-section">
+        <div class="info-row">
+            <span class="info-label">Numéro de commande: </span>
+            <span class="info-value">#{{ order_number }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Nom de la commande: </span>
+            <span class="info-value">{{ campaign_name }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Quantité: </span>
+            <span class="info-value">{{ quantity }} sacs</span>
+        </div>
+        {% if postal_codes %}
+        <div class="info-row">
+            <span class="info-label">Codes postaux: </span>
+            <span class="info-value">{{ postal_codes }}</span>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if new_status == 'ASSIGNED_TO_PARTNER' %}
+    <div class="alert-box alert-info">
+        <p><strong>🤝 Partenaire assigné</strong></p>
+        <p style="margin-top: 10px;">Votre commande a été assignée à un partenaire qui s'occupera de la distribution. Vous recevrez bientôt les coordonnées de votre partenaire.</p>
+    </div>
+    {% elif new_status == 'IN_PRINTING' %}
+    <div class="alert-box alert-warning">
+        <p><strong>🖨️ Impression en cours</strong></p>
+        <p style="margin-top: 10px;">Vos cartes sont maintenant en cours d'impression. Nos équipes travaillent pour vous garantir une qualité optimale. Vous recevrez une notification lorsque l'impression sera terminée.</p>
+    </div>
+    {% elif new_status == 'PRINTED' %}
+    <div class="alert-box alert-success">
+        <p><strong>✅ Impression terminée</strong></p>
+        <p style="margin-top: 10px;">Vos cartes ont été imprimées avec succès ! Elles seront bientôt distribuées dans les zones sélectionnées.</p>
+    </div>
+    {% elif new_status == 'IN_DISTRIBUTION' %}
+    <div class="alert-box alert-info">
+        <p><strong>🚚 Distribution en cours</strong></p>
+        <p style="margin-top: 10px;">Votre commande est maintenant en cours de distribution. Les sacs seront bientôt livrés dans les zones sélectionnées.</p>
+    </div>
+    {% elif new_status == 'DELIVERED' %}
+    <div class="alert-box alert-success">
+        <p><strong>📦 Commande livrée</strong></p>
+        <p style="margin-top: 10px;">Excellent ! Votre commande a été livrée avec succès. Les sacs ont été distribués dans les zones sélectionnées.</p>
+    </div>
+    {% elif new_status == 'FINISHED' %}
+    <div class="alert-box alert-success">
+        <p><strong>🎉 Commande terminée</strong></p>
+        <p style="margin-top: 10px;">Félicitations ! Votre commande est terminée. Tous les sacs ont été distribués avec succès. Nous espérons que cette campagne vous apportera de nouveaux clients !</p>
+    </div>
+    {% endif %}
+
+    <div class="button-container">
+        <a href="{{ dashboard_url }}" class="button">Suivre ma commande</a>
+    </div>
+
+    <div class="content-section">
+        <p><strong>Des questions ?</strong></p>
+        <p>Contactez-nous à <a href="mailto:support@bagpub.com" style="color: #A67C52;">support@bagpub.com</a> si vous avez des questions sur l'avancement de votre commande.</p>
+    </div>
+
+    <p style="margin-top: 30px;">Cordialement,<br><strong>L'équipe BagPub</strong></p>
+{% endblock %}

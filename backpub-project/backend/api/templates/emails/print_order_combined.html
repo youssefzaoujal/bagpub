@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande d'impression combinée</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .email-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        .header {
+            background: linear-gradient(135deg, #A67C52 0%, #8B5A3C 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .alert-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 5px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .alert-box h2 {
+            color: #d68910;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        .info-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .info-card h3 {
+            color: #A67C52;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 2px solid #A67C52;
+            padding-bottom: 10px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #495057;
+        }
+        .info-value {
+            color: #212529;
+        }
+        .campaign-section {
+            background: white;
+            border: 2px solid #A67C52;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .campaign-header {
+            background: linear-gradient(135deg, #A67C52 0%, #8B5A3C 100%);
+            color: white;
+            padding: 15px 20px;
+            margin: -25px -25px 20px -25px;
+            border-radius: 8px 8px 0 0;
+        }
+        .campaign-header h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .design-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .design-info h4 {
+            color: #A67C52;
+            margin-bottom: 10px;
+        }
+        .design-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .design-info li {
+            padding: 5px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .design-info li:last-child {
+            border-bottom: none;
+        }
+        .image-preview {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .image-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #A67C52;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .partner-card {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        .partner-card h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        .summary-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        .summary-box h2 {
+            color: #1565c0;
+            margin-bottom: 15px;
+        }
+        .quantity-badge {
+            display: inline-block;
+            background: #1565c0;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #A67C52;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 5px;
+        }
+        .badge {
+            display: inline-block;
+            background: #A67C52;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>🖨️ Commande d'impression combinée</h1>
+            <p>Lot {{ batch_number }}</p>
+            <span class="badge">{{ campaigns_count }} campagne(s)</span>
+        </div>
+
+        <div class="content">
+            <!-- Alerte importante -->
+            <div class="alert-box">
+                <h2>⚠️ IMPORTANT - LOT COMBINÉ</h2>
+                <p><strong>Cette commande combine {{ campaigns_count }} campagne(s) en UN SEUL LOT de 1000 sacs.</strong></p>
+                <p><strong>QUANTITÉ À IMPRIMER: 1000 sacs au total</strong> (pas {{ total_if_separate }} sacs)</p>
+                <p>Les {{ campaigns_count }} designs doivent être <strong>COMBINÉS</strong> dans les 1000 sacs selon les instructions ci-dessous.</p>
+            </div>
+
+            <!-- Informations du lot -->
+            <div class="info-card">
+                <h3>📋 Informations du lot</h3>
+                <div class="info-row">
+                    <span class="info-label">Numéro de lot:</span>
+                    <span class="info-value"><strong>{{ batch_number }}</strong></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Quantité totale:</span>
+                    <span class="info-value"><strong class="quantity-badge">1000 sacs</strong></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Nombre de campagnes:</span>
+                    <span class="info-value">{{ campaigns_count }} campagne(s)</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Code postal principal:</span>
+                    <span class="info-value">{{ postal_code }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Date de commande:</span>
+                    <span class="info-value">{{ order_date }}</span>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="info-card">
+                <h3>📝 Instructions de combinaison</h3>
+                <p>Vous devez créer <strong>1000 sacs</strong> qui contiennent <strong>TOUS les designs</strong> des campagnes listées ci-dessous.</p>
+                <p>Chaque sac doit contenir les designs de toutes les campagnes combinées.</p>
+            </div>
+
+            <!-- Détails de chaque campagne -->
+            {% for campaign in campaigns %}
+            <div class="campaign-section">
+                <div class="campaign-header">
+                    <h3>🎯 Campagne {{ forloop.counter }}/{{ campaigns_count }}: {{ campaign.name }}</h3>
+                </div>
+
+                <div class="info-card">
+                    <h4>Informations générales</h4>
+                    <div class="info-row">
+                        <span class="info-label">Numéro de commande:</span>
+                        <span class="info-value">{{ campaign.order_number }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Client:</span>
+                        <span class="info-value">{{ campaign.client_name }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email client:</span>
+                        <span class="info-value">{{ campaign.client_email }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Téléphone client:</span>
+                        <span class="info-value">{{ campaign.client_phone|default:"N/A" }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Codes postaux:</span>
+                        <span class="info-value">{{ campaign.postal_codes }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Quantité dans le lot:</span>
+                        <span class="info-value">Partie de 1000 sacs (pas 1000 sacs séparés)</span>
+                    </div>
+                </div>
+
+                {% if campaign.has_custom_card %}
+                <!-- Carte personnalisée -->
+                <div class="design-info">
+                    <h4>📎 DESIGN {{ forloop.counter }} - CARTE PERSONNALISÉE</h4>
+                    <p><strong>Type:</strong> Carte personnalisée fournie par le client</p>
+                    <p><strong>Nom du fichier:</strong> {{ campaign.custom_card_filename }}</p>
+                    <p><strong>⚠️ IMPORTANT:</strong> Utilisez ce fichier tel quel, sans modification</p>
+                    <p>Ce design doit être inclus dans les 1000 sacs combinés</p>
+                    {% if campaign.custom_card_attached %}
+                    <div class="image-preview">
+                        <p><strong>Fichier joint:</strong> {{ campaign.custom_card_filename }}</p>
+                        <p style="color: #28a745; font-weight: bold;">✅ Fichier attaché à cet email</p>
+                    </div>
+                    {% endif %}
+                </div>
+                {% elif campaign.has_design %}
+                <!-- Design template -->
+                <div class="design-info">
+                    <h4>🎨 DESIGN {{ forloop.counter }} - TEMPLATE</h4>
+                    <ul>
+                        <li><strong>Template:</strong> Template {{ campaign.template_number }}</li>
+                        <li><strong>Slogan:</strong> {{ campaign.slogan|default:"(Aucun slogan)" }}</li>
+                        <li><strong>Email:</strong> {{ campaign.design_email }}</li>
+                        <li><strong>Téléphone:</strong> {{ campaign.design_phone }}</li>
+                        <li><strong>Adresse:</strong> {{ campaign.design_address|default:"(Non spécifiée)" }}</li>
+                        <li><strong>Code postal:</strong> {{ campaign.design_postal_code|default:"(Non spécifié)" }}</li>
+                        <li><strong>Couleur principale:</strong> <span style="color: {{ campaign.accent_color }}; font-weight: bold;">{{ campaign.accent_color }}</span></li>
+                        <li><strong>Méthode contact QR:</strong> {{ campaign.contact_method }}</li>
+                    </ul>
+                    {% if campaign.logo_url %}
+                    <p><strong>Logo:</strong> <a href="{{ campaign.logo_url }}">Télécharger le logo</a></p>
+                    {% endif %}
+                    {% if campaign.qr_code_url %}
+                    <p><strong>QR Code:</strong> <a href="{{ campaign.qr_code_url }}">Télécharger le QR Code</a></p>
+                    {% endif %}
+                    {% if campaign.template_image_attached %}
+                    <div class="image-preview">
+                        <p><strong>Image du template:</strong> Template {{ campaign.template_number }}</p>
+                        <p style="color: #28a745; font-weight: bold;">✅ Image attachée à cet email</p>
+                    </div>
+                    {% endif %}
+                    <p><strong>⚠️ Ce design doit être inclus dans les 1000 sacs combinés</strong></p>
+                </div>
+                {% else %}
+                <div class="design-info" style="background: #fff3cd;">
+                    <h4>⚠️ ATTENTION</h4>
+                    <p>Aucun design configuré pour cette campagne</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <!-- Informations partenaire -->
+            <div class="partner-card">
+                <h3>🚚 Partenaire de distribution</h3>
+                <div class="info-row">
+                    <span class="info-label">Nom:</span>
+                    <span class="info-value"><strong>{{ partner.company_name }}</strong></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value">{{ partner.email }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Téléphone:</span>
+                    <span class="info-value">{{ partner.phone|default:"N/A" }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Adresse:</span>
+                    <span class="info-value">{{ partner.address|default:"N/A" }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Ville:</span>
+                    <span class="info-value">{{ partner.city|default:"N/A" }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Code postal:</span>
+                    <span class="info-value">{{ partner.postal_code|default:"N/A" }}</span>
+                </div>
+            </div>
+
+            <!-- Récapitulatif -->
+            <div class="summary-box">
+                <h2>📊 Récapitulatif final</h2>
+                <div class="quantity-badge">1000 sacs au total</div>
+                <p style="margin-top: 20px; font-size: 16px;">
+                    Les <strong>{{ campaigns_count }} designs</strong> ci-dessus doivent être <strong>COMBINÉS</strong> dans ces 1000 sacs.
+                </p>
+                <p style="font-size: 16px;">
+                    Chaque sac doit contenir les designs de toutes les campagnes listées.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Merci de confirmer la réception de cette commande.</strong></p>
+            <p>Pour toute question, contactez-nous à l'adresse email de réponse.</p>
+            <p style="margin-top: 20px; font-size: 12px; opacity: 0.8;">
+                Système BagPub - Commande d'impression automatique
+            </p>
+        </div>
+    </div>
+</body>
+</html>

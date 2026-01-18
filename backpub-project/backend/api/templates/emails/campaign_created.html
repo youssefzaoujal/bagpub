@@ -1,0 +1,60 @@
+{% extends 'emails/base.html' %}
+
+{% block icon %}📋{% endblock %}
+{% block header_title %}Nouvelle campagne créée{% endblock %}
+
+{% block content %}
+<div class="greeting">
+    <p>Bonjour,</p>
+</div>
+
+<div class="content-section">
+    <p>Une nouvelle campagne a été créée sur <strong>BagPub</strong> et nécessite votre attention.</p>
+    
+    <div class="alert-box alert-info">
+        <p><strong>📝 Nouvelle commande</strong></p>
+        <p style="margin-top: 10px;">Une nouvelle commande vient d'être créée par un client. Connectez-vous à votre tableau de bord pour examiner les détails et la traiter.</p>
+    </div>
+
+    <h2>📦 Détails de la commande</h2>
+    
+    <div class="content-section">
+        <div class="info-row">
+            <span class="info-label">Nom de la campagne</span>
+            <span class="info-value">{{ campaign_name }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Client</span>
+            <span class="info-value">{{ client_name }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Numéro de commande</span>
+            <span class="info-value">#{{ order_number }}</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Quantité</span>
+            <span class="info-value">{{ quantity }} sacs</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Codes postaux</span>
+            <span class="info-value">{{ postal_codes }}</span>
+        </div>
+    </div>
+
+    {% if admin_url %}
+    <div class="button-container">
+        <a href="{{ admin_url }}" class="button">Voir la commande dans l'admin</a>
+    </div>
+    {% endif %}
+
+    <div class="content-section">
+        <p><strong>Prochaines étapes :</strong></p>
+        <ul style="margin-left: 25px; margin-top: 10px; color: #4a5568;">
+            <li>Examiner les détails de la commande</li>
+            <li>Assigner un partenaire pour la distribution</li>
+            <li>Envoyer à l'impression une fois validée</li>
+        </ul>
+    </div>
+
+    <p style="margin-top: 30px;">Cordialement,<br><strong>L'équipe BagPub</strong></p>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'emails/base.html' %}
+
+{% block icon %}🎉{% endblock %}
+{% block header_title %}Bienvenue chez BagPub !{% endblock %}
+
+{% block content %}
+<div class="greeting">
+    <p>Bonjour <strong>{{ company_name }}</strong>,</p>
+</div>
+
+<div class="content-section">
+    <p>Nous sommes ravis de vous accueillir sur <strong>BagPub</strong>, la plateforme innovante de cartes de visite sur sacs craft !</p>
+    
+    <div class="info-box">
+        <p style="margin-bottom: 10px;"><strong>Votre compte a été créé avec succès.</strong></p>
+        <p style="color: #666; font-size: 14px;">Vous pouvez désormais accéder à toutes les fonctionnalités de notre plateforme.</p>
+    </div>
+
+    <h2>🚀 Que pouvez-vous faire maintenant ?</h2>
+    
+    <div class="content-section">
+        <div class="info-row">
+            <span class="info-label">📝 Créer vos commandes</span>
+            <span class="info-value">C'est parti !</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">🎨 Uploader vos cartes</span>
+            <span class="info-value">Design personnalisé</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">📊 Suivre vos commandes</span>
+            <span class="info-value">En temps réel</span>
+        </div>
+    </div>
+
+    <div class="alert-box alert-info">
+        <p><strong>💡 Astuce :</strong> Commencez par créer votre première commande depuis votre tableau de bord. Notre équipe vous accompagnera à chaque étape.</p>
+    </div>
+
+    <div class="button-container">
+        <a href="{{ dashboard_url }}" class="button">Accéder à mon tableau de bord</a>
+    </div>
+
+    <div class="content-section">
+        <p><strong>Besoin d'aide ?</strong></p>
+        <p>Notre équipe support est là pour vous aider. Contactez-nous à <a href="mailto:support@bagpub.com" style="color: #A67C52;">support@bagpub.com</a></p>
+    </div>
+{% endblock %}
