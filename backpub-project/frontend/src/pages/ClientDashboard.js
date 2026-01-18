@@ -953,7 +953,7 @@ const ClientDashboard = () => {
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8000/api/dashboard/stats/', {
+      const response = await axios.get(`${API_URL}/dashboard/stats/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setStats(response.data);
