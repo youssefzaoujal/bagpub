@@ -1,1 +1,1 @@
-web: gunicorn backpub.wsgi --log-file -
+web: bash start.sh
