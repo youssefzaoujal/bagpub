@@ -1069,9 +1069,9 @@ PartnersMarquee.displayName = 'PartnersMarquee';
  */
 const AdvancedROISimulator = memo(() => {
   const [cards, setCards] = useState(1000);
-  const [budget, setBudget] = useState(129);
-  const viewsPerCard = 9;
-  const costPerCard = 0.129; // 129€ pour 1000 sacs = 0.129€ par sac
+  const [budget, setBudget] = useState(130);
+  const viewsPerCard = 6;
+  const costPerCard = 0.13; // 130€ pour 1000 sacs = 0.13€ par sac
   
   const totalImpressions = useMemo(() => cards * viewsPerCard, [cards, viewsPerCard]);
   const estimatedCost = useMemo(() => cards * costPerCard, [cards, costPerCard]);
@@ -1085,7 +1085,7 @@ const AdvancedROISimulator = memo(() => {
 
   const handleBudgetChange = useCallback((value) => {
     setBudget(value);
-    // Budget fixe à 129€ pour 1000 sacs
+    // Budget fixe à 130€ +20 pour 1000 sacs
     setCards(1000);
   }, []);
 
@@ -1111,7 +1111,7 @@ const AdvancedROISimulator = memo(() => {
                 <div className="flex justify-between mb-4">
                   <div>
                     <div className="font-semibold text-slate-900">Nombre de cartes</div>
-                    <div className="text-sm text-slate-500">Chaque carte = 9 emplacements</div>
+                    <div className="text-sm text-slate-500">Chaque carte = 6 emplacements</div>
                   </div>
                   <div className="text-2xl font-bold text-[#A67C52]">{cards.toLocaleString()}</div>
                 </div>
